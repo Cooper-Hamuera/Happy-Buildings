@@ -2,21 +2,33 @@
 <html>
 
   <head>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8" />
+    <title>AngularJS Plunker</title>
+    <script>document.write('<base href="' + document.location + '" />');</script>
+    <link rel="stylesheet" href="style.css" />
+    <script data-require="angular.js@1.4.x" src="https://code.angularjs.org/1.4.12/angular.js" data-semver="1.4.9"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">  <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
 
   <body>
+  <div ng-app="">
+<div id="login body">
   <div id="login">
     <form>
       <h2>Happy Buildings</h2>
-      <input type="text" id="username" placeholder="Enter Username"/>
-      <input type="text" id="password" placeholder="Enter Password"/>
+      <input type="text" id="username" placeholder="Enter Username" ng-model ="username"/>
+      <!--<div ng-bind="username"></div>-->
+      <input type="password" id="password" placeholder="Enter Password" ng-model ="password"/>
+     <!-- <div ng-bind="password"></div>-->
       <button>Login</button>
       <button>Cancel</button>
-      <p id="form_feedback">
+      <p id="form_feedback"></p>
+      <div> You entered: {{username}} {{password}} </div>
     </form>
   </div>
+</div>
    </body>
 
 </html>

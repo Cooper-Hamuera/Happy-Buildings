@@ -1,19 +1,18 @@
 body{
-  background: #292931;
-  background-image: url("https://s-media-cache-ak0.pinimg.com/originals/f7/ab/d7/f7abd7a179f7c702c0d25f59a4d99250.jpg");
+  background: url("https://s-media-cache-ak0.pinimg.com/originals/f7/ab/d7/f7abd7a179f7c702c0d25f59a4d99250.jpg") no-repeat center center fixed;
+  background-size:100% 100%;
 }
 #login{
-
   position: absolute;
-  top:50%;
+  top:35%;
   left:50%;
   transform:translate(-50%,-50%);
 }
 #login h2{
   text-align: center;
   color: Sienna;
-  font-family: sansserif;
-  font-size: 35px;
+  font-family: 'Tangerine', serif;;
+  font-size: 70px;
 }
 #login input{
   display: block;
@@ -36,4 +35,7 @@ body{
   text-align: center;
   vertical-align: middle;
   line-height: 20x;
+}
+login body{
+
 }
