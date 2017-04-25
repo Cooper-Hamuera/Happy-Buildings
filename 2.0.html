@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {font-family: "Lato", sans-serif, bold;}
+
+        /* Style the tab */
+        div.tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+        /* Style the buttons inside the tab */
+        div.tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+
+        /* Change background color of buttons on hover */
+        div.tab button:hover {
+            background-color: #ddd;
+        }
+
+        /* Create an active/current tablink class */
+        div.tab button.active {
+            background-color: #ccc;
+        }
+
+        /* Style the tab content */
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+    </style>
+</head>
+<body>
+
+<p>HAPPY BUILDINGS</p>
+
+<div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'Building Directory')">Building Directory</button>
+    <button class="tablinks" onclick="openTab(event, 'Building Information')">Building Information</button>
+    <button class="tablinks" onclick="openTab(event, 'Project Information')">Project Information</button>
+    <button class="tablinks" onclick="openTab(event, 'Work')">Work</button>
+    <button class="tablinks" onclick="openTab(event, 'Issue')">Issue</button>
+</div>
+
+<div id="Building Directory" class="tabcontent">
+    <h3>Building Directory</h3>
+    <p>Its in the fuckin title innit</p>
+    <div id="content">
+        <div id="main_content">
+            <form id="simpleForm">
+                <div>
+                    <label for="myName">Building ID:</label>
+                    <input type="text" name="bId" id="bId">
+                </div>
+                <div>
+                    <label for="myName">Building Name:</label>
+                    <input type="text" name="nmyName" id="myName">
+                </div>
+                <div>
+                    <label for="bAdd">Building Address:</label>
+                    <input type="text" name="bAdd" id="bAdd">
+                </div>
+                <div>
+                    <label for="owners">Building Owners:</label>
+                    <input type="text" name="owners" id="owners">
+                </div>
+                <div id="theSubmit">
+                    <input type="submit" value=" Send Now ">
+                </div>
+
+
+
+            </form>
+
+        </div><!--end main_content-->
+
+        <div id="sidebar">
+
+
+        </div><!--end sidebar-->
+
+        <div class="clear"></div>
+    </div><!--end content-->
+    <div id="footer"></div><!--end footer-->
+
+
+</div><!--end-->
+</div>
+
+<div id="Building Information" class="tabcontent">
+    <h3>Building Information</h3>
+    <p>Once again read the title</p>
+    <div id="content">
+        <div id="main_content">
+            <form id="simpleForm">
+                <div>
+                    <label for="myName">Building ID:</label>
+                    <input type="text" name="bId" id="bId">
+                </div>
+                <div>
+                    <label for="myName">Building Name:</label>
+                    <input type="text" name="nmyName" id="myName">
+                </div>
+                <div>
+                    <label for="bAdd">Building Address:</label>
+                    <input type="text" name="bAdd" id="bAdd">
+                </div>
+                <div>
+                    <label for="owners">Building Owners:</label>
+                    <input type="text" name="owners" id="owners">
+                </div>
+                <div>
+                    <label for="bType">Building Type:</label>
+                    <input type="text" name="bType" id="bType">
+                </div>
+                <div>
+                    <label for="cType">Construction Type:</label>
+                    <input type="text" name="cType" id="cType">
+                </div>
+                <div>
+                    <label for="pList">Project List:</label>
+                    <input type="text" name="pList" id="pList">
+                </div>
+                <div>
+                    <label for="comments">Comments:</label>
+                    <textarea name="comments" id="comments" rows="5" cols="50"></textarea>
+                </div>
+                <div id="theSubmit">
+                    <input type="submit" value=" Send Now ">
+                </div>
+
+
+
+            </form>
+
+        </div><!--end main_content-->
+</div>
+    <div id="sidebar">
+
+
+    </div><!--end sidebar-->
+
+    <div class="clear"></div>
+</div><!--end content-->
+<div id="footer"></div><!--end footer-->
+
+
+</div>
+
+<div id="Project Information" class="tabcontent">
+    <h3>Project Information</h3>
+    <p></p>
+    <div id="content">
+        <div id="main_content">
+            <form id="simpleForm">
+                <div>
+                    <label for="title">Project Title:</label>
+                    <input type="text" name="bId" id="title">
+                </div>
+                <div>
+                    <label for="pStatus">Project Status:</label>
+                    <input type="text" name="pStatus" id="pStatus">
+                </div>
+                <div>
+                    <label for="sDate">Start Date:</label>
+                    <input type="text" name="sDate" id="sDate">
+                </div>
+                <div>
+                    <label for="eDate">End Date:</label>
+                    <input type="text" name="eDate" id="eDate">
+                </div>
+                <div>
+                    <label for="manager">Manager:</label>
+                    <input type="text" name="manager" id="manager">
+                </div>
+                <div>
+                    <label for="manDets">Manager's Contact Details:</label>
+                    <input type="text" name="manDets" id="manDets">
+                </div>
+                <div>
+                    <label for="scope">Scope:</label>
+                    <input type="text" name="scope" id="scope">
+                </div>
+                <div>
+                    <label for="wList">Work List:</label>
+                    <input type="text" name="wList" id="wList">
+                </div>
+                <div>
+                    <label for="iList">Issue List:</label>
+                    <input type="text" name="iList" id="iList">
+                </div>
+                <div>
+                    <label for="comments">Comments:</label>
+                    <textarea name="comments" id="comments" rows="5" cols="50"></textarea>
+                </div>
+                <div id="theSubmit">
+                    <input type="submit" value=" Send Now ">
+                </div>
+
+
+
+            </form>
+
+        </div><!--end main_content-->
+        <div id="sidebar">
+
+
+        </div><!--end sidebar-->
+
+        <div class="clear"></div>
+    </div><!--end content-->
+    <div id="footer"></div><!--end footer-->
+
+
+</div>
+</div>
+<div id="Work" class="tabcontent">
+    <h3>Work</h3>
+    <p>Worksite Details</p>
+
+    <div id="wrapper">
+        <div id="header"></div><!--end header-->
+
+        <div id="content">
+            <div id="main_content">
+                <form id="simpleForm">
+                    <div>
+                        <label for="wTitle">Title:</label>
+                        <input type="text" name="wTitle" id="wTitle">
+                    </div>
+                    <div>
+                        <label for="wId">Work ID:</label>
+                        <input type="text" name="wId" id="wId">
+                    </div>
+                    <div>
+                        <label for="wsDate">Start Date:</label>
+                        <input type="text" name="wsDate" id="wsDate">
+                    </div>
+                    <div>
+                        <label for="weDate">End Date:</label>
+                        <input type="text" name="weDate" id="weDate">
+                    </div>
+                    <div>
+                        <label for="contractor">Contractor:</label>
+                        <input type="text" name="contractor" id="contractor">
+                    </div>
+                    <div>
+                        <label for="wScope">Scope:</label>
+                        <input type="text" name="wScope" id="wScope">
+                    </div>
+                    <div>
+                        <label for="wStatus">Construction Type:</label>
+                        <input type="text" name="wStatus" id="wStatus">
+                    </div>
+                    <label for="wComments">Comments:</label>
+                    <textarea name="wComments" id="wComments" rows="5" cols="50"></textarea>
+            </div>
+            <div id="theSubmit">
+                <input type="submit" value=" Send Now ">
+            </div>
+
+
+
+            </form>
+
+        </div><!--end main_content-->
+
+        <div id="sidebar">
+
+
+        </div><!--end sidebar-->
+
+        <div class="clear"></div>
+    </div><!--end content-->
+    <div id="footer"></div><!--end footer-->
+
+
+</div><!--end-->
+</div>
+<div id="Work" class="tabcontent">
+    <h3>Work</h3>
+    <p>Work Description</p>
+    <div id="content">
+        <div id="main_content">
+            <form id="simpleForm">
+                <div>
+                    <label for="wTitle">Title:</label>
+                    <input type="text" name="wTitle" id="wTitle">
+                </div>
+                <div>
+                    <label for="wId">Work ID:</label>
+                    <input type="text" name="wId" id="wId">
+                </div>
+                <div>
+                    <label for="wsDate">Start Date:</label>
+                    <input type="text" name="wsDate" id="wsDate">
+                </div>
+                <div>
+                    <label for="weDate">End Date:</label>
+                    <input type="text" name="weDate" id="weDate">
+                </div>
+                <div>
+                    <label for="contractor">Contractor:</label>
+                    <input type="text" name="contractor" id="contractor">
+                </div>
+                <div>
+                    <label for="wScope">Scope:</label>
+                    <input type="text" name="wScope" id="wScope">
+                </div>
+                <div>
+                    <label for="wStatus">Construction Type:</label>
+                    <input type="text" name="wStatus" id="wStatus">
+                </div>
+                <label for="wComments">Comments:</label>
+                <textarea name="wComments" id="wComments" rows="5" cols="50"></textarea>
+        </div>
+        <div id="theSubmit">
+            <input type="submit" value=" Send Now ">
+        </div>
+
+
+
+        </form>
+
+    </div><!--end main_content-->
+
+    <div id="sidebar">
+
+
+    </div><!--end sidebar-->
+
+    <div class="clear"></div>
+</div><!--end content-->
+<div id="footer"></div><!--end footer-->
+
+
+
+    <div class="clear"></div>
+</div><!--end content-->
+</div>
+
+
+<div id="Issue" class="tabcontent">
+    <h3>Issue</h3>
+    <p>Issue Description</p>
+    <div id="content">
+        <div id="main_content">
+            <form id="simpleForm">
+                <div>
+                    <label for="iTitle">Title:</label>
+                    <input type="text" name="iTitle" id="iTitle">
+                </div>
+                <div>
+                    <label for="pId">Project ID:</label>
+                    <input type="text" name="pId" id="pId">
+                </div>
+                <div>
+                    <label for="information">Information:</label>
+                    <input type="text" name="information" id="information">
+                </div>
+                <div>
+                    <label for="iDate">Issue Date:</label>
+                    <input type="text" name="iDate" id="iDate">
+                </div>
+                <div>
+                    <label for="raised">Raised by:</label>
+                    <input type="text" name="raised" id="raised">
+                </div>
+                <div>
+                    <label for="wComments">Comments:</label>
+                    <textarea name="wComments" id="wComments" rows="10" cols="100"></textarea>
+                </div>
+                <div id="theSubmit">
+                    <input type="submit" value=" Send Now ">
+                </div>
+
+
+
+            </form>
+
+        </div><!--end main_content-->
+
+        <div id="sidebar">
+
+
+            <div>
+                <label for="wId">Work ID:</label>
+                <input type="text" name="wId" id="wId">
+            </div>
+        </div><!--end sidebar-->
+
+        <div class="clear"></div>
+    </div><!--end content-->
+    <div id="footer"></div><!--end footer-->
+
+
+</div><!--end-->
+</div>
+
+<script>
+    function openTab(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+</body>
+</html>
