@@ -11,7 +11,7 @@ body{
 #login h2{
   text-align: center;
   color: Sienna;
-  font-family: 'Tangerine', serif;;
+  font-family: Arial, Helvetica Neue, sans-serif, bold;
   font-size: 70px;
 }
 #login input{
@@ -22,7 +22,7 @@ body{
   fontsize: 28px;
   font-family:sans-serif;
   color: DarkGray;
-  backgroung: rgba(0,0,0,0.3);
+  backgroung: rgba(0,0,0,5);
   outline: none;
   border:1px solid rgba(0,0,0,0.3);
   border-radius: 5px:
