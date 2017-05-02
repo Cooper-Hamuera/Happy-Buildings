@@ -13,7 +13,7 @@ app.controller('MainCtrl', function($scope) {
         var passwordAccess="password";
 
         if($scope.if_username==usernameAccess & $scope.if_password==passwordAccess){
-            $scope.feedback="login successful";
+            $scope.feedback="Login Successful";
         }else{
             $scope.feedback="Username or Password incorrect";
         }
