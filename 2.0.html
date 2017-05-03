@@ -1,10 +1,41 @@
 <!DOCTYPE html>
 <html>
-<head>
 
-</head>
+    <head>
+        <meta charset="utf-8" />
+        <title>AngularJS Plunker</title>
+        <script>document.write('<base href="' + document.location + '" />');</script>
+        <link rel="stylesheet" href="style.css" />
+        <script data-require="angular.js@1.4.x" src="https://code.angularjs.org/1.4.12/angular.js" data-semver="1.4.9"></script>
+        <script src="app.js"></script>
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">  <link rel="stylesheet" href="style.css">
+    </head>
+
 <body>
-<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">  <link rel="stylesheet" href="style.css">
+
+
+<div id="EiffelTower" ng-controller="MainCtrl" >
+    <div id="login body">
+        <div id="login body" ng-app="HappyBuildings" ng-controller="MainCtrl">
+            <form id="login">
+                <h2>Happy Buildings</h2>
+                <input type="text" id="username" placeholder="Enter Username" ng-model ="if_username"/>
+                <!--<div ng-bind="username"></div>-->
+                <input type="password" id="password" placeholder="Enter Password" ng-model ="if_password"/>
+                <!-- <div ng-bind="password"></div>-->
+                <input type="submit" class="submit button" value="Login" ng-click="checkLogin()">
+                <input type="submit" class="submit button" value="Cancel" ng-click="cancelLogin()">
+                <br />
+                <br />
+                <p id="feedback" ng-bind="feedback"></p>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div id="formcontainer">
 <div class="header">
     <h1><center>HAPPY BUILDINGS</h1></center> </h1>
 </div>
@@ -323,21 +354,7 @@
 
 </div><!--end-->
 
-<script>
-    function openTab(evt, cityName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        document.getElementById(cityName).style.display = "block";
-        evt.currentTarget.className += " active";
-    }
-</script>
+
 
 </body>
 </html>
