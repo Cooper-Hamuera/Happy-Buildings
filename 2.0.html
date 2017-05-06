@@ -15,8 +15,11 @@
 
 
 <!--Login page-->
-<input type="ng-bind" ng-model="hideLogin"/>
-<div id="EiffelTower" ng-controller="MainCtrl">
+<body ng-app="hidemodule">
+<div ng-controller="hidecontrol"> <!--Hide controller-->
+<input type="checkbox" ng-model="hideLogin"/>
+
+<div id="EiffelTower" ng-controller="MainCtrl" ng-hide="hideLogin">
     <div id="login body" ng-app="HappyB" ng-controller="MainCtrl">
 
         <form id="login">
@@ -34,6 +37,8 @@
         </form>
     </div>
 </div>
+</div> <!--Hide controller-->
+</body>
 <!--Login page-->
 
 

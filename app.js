@@ -22,15 +22,17 @@ app.controller('MainCtrl', function($scope) {
     $scope.feedback = "";
 
     //check user input against credentials listed
-    $scope.checkLogin=function(){
-        var usernameAccess="admin";
-        var passwordAccess="password";
+    $scope.checkLogin=function() {
+        var usernameAccess = "admin";
+        var passwordAccess = "password";
 
-        if($scope.if_username==usernameAccess & $scope.if_password==passwordAccess){
-            $scope.feedback="Login Successful";
+        if ($scope.if_username == usernameAccess & $scope.if_password == passwordAccess) {
+            $scope.feedback = "Login Successful";
+
         }else{
             $scope.feedback="Username or Password Incorrect";
         }
+
     };
 
     //cancel button clears the username and password fields
@@ -41,4 +43,13 @@ app.controller('MainCtrl', function($scope) {
     };
 
 });
-//Login feedback
+//End Login feedback
+
+//Hide feature
+.module("hidemodule")
+.controller('hidecontrol', function($scope){
+
+    var x = document.getElementById('EiffelTower');
+    $scope.loginpage=EiffelTower;
+
+}
