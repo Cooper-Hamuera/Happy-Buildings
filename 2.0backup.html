@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head>
 
+<!--source list-->
+<head>
+    <script data-require="angular.js@1.4.x" src="https://code.angularjs.org/1.4.12/angular.js" data-semver="1.4.9"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
+<!--source list-->
+
+
+<!--body start-->
 <body>
-<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">  <link rel="stylesheet" href="style.css">
+
+
+<!--Navagation bar title-->
 <div class="header">
     <h1><center>HAPPY BUILDINGS</h1></center> </h1>
 </div>
+<!--Navagation bar title-->
+
+
+<!--Navagation bar tabs-->
 <div class="tab">
     <button class="tablinks" onclick="openTab(event, 'Building Directory')">Building Directory</button>
     <button class="tablinks" onclick="openTab(event, 'Building Information')">Building Information</button>
@@ -15,6 +29,10 @@
     <button class="tablinks" onclick="openTab(event, 'Work')">Work</button>
     <button class="tablinks" onclick="openTab(event, 'Issue')">Issue</button>
 </div>
+<!--Navagation bar tabs-->
+
+
+<!--Building Directory-->
 <div id="Building Directory" class="tabcontent">
     <h3><center>Building Directory</center></h3>
 
@@ -67,9 +85,11 @@
     <div id="footer"></div><!--end footer-->
 
 
-</div><!--Building Directory end-->
+</div>
+<!--Building Directory-->
 
 
+<!--Building Information-->
 <div id="Building Information" class="tabcontent">
     <h3><center>Building Information</center></h3>
 
@@ -132,12 +152,13 @@
     </div><!--end sidebar-->
 
     <div class="clear"></div>
-</div><!--end content-->
-<div id="footer"></div><!--end footer-->
 
-
+    <div id="footer"></div><!--end footer-->
 </div>
+<!--Building Information-->
 
+
+<!--Project Information-->
 <div id="Project Information" class="tabcontent">
     <h3><center>Project Information</center></h3>
 
@@ -202,11 +223,11 @@
         <div class="clear"></div>
     </div><!--end content-->
     <div id="footer"></div><!--end footer-->
-
-
-
 </div><!--end-->
+<!--Project Information-->
 
+
+<!--Work-->
 <div id="Work" class="tabcontent">
     <h3><center>Work</center></h3>
 
@@ -259,14 +280,12 @@
         <div class="clear"></div>
     </div><!--end content-->
     <div id="footer"></div><!--end footer-->
-
-
-
     <div class="clear"></div>
-</div><!--end content-->
 </div>
+<!--Work-->
 
 
+<!--Issue-->
 <div id="Issue" class="tabcontent">
     <h3><center>Issue</center></h3>
 
@@ -319,25 +338,12 @@
         <div class="clear"></div>
     </div><!--end content-->
     <div id="footer"></div><!--end footer-->
+</div>
+<!--Issue-->
 
-
-</div><!--end-->
-
-<script>
-    function openTab(evt, cityName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        document.getElementById(cityName).style.display = "block";
-        evt.currentTarget.className += " active";
-    }
-</script>
 
 </body>
+<!--Body end-->
+
+
 </html>

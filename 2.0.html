@@ -1,44 +1,48 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <meta charset="utf-8" />
-        <title>AngularJS Plunker</title>
-        <script>document.write('<base href="' + document.location + '" />');</script>
-        <link rel="stylesheet" href="style.css" />
-        <script data-require="angular.js@1.4.x" src="https://code.angularjs.org/1.4.12/angular.js" data-semver="1.4.9"></script>
-        <script src="app.js"></script>
-        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">  <link rel="stylesheet" href="style.css">
-    </head>
+<!--source list-->
+<head>
+    <script data-require="angular.js@1.4.x" src="https://code.angularjs.org/1.4.12/angular.js" data-semver="1.4.9"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<!--source list-->
 
+
+<!--body start-->
 <body>
 
 
+<!--Login page-->
 <div id="EiffelTower" ng-controller="MainCtrl" >
-    <div id="login body">
-        <div id="login body" ng-app="HappyBuildings" ng-controller="MainCtrl">
-            <form id="login">
-                <h2>Happy Buildings</h2>
-                <input type="text" id="username" placeholder="Enter Username" ng-model ="if_username"/>
-                <!--<div ng-bind="username"></div>-->
-                <input type="password" id="password" placeholder="Enter Password" ng-model ="if_password"/>
-                <!-- <div ng-bind="password"></div>-->
-                <input type="submit" class="submit button" value="Login" ng-click="checkLogin()">
-                <input type="submit" class="submit button" value="Cancel" ng-click="cancelLogin()">
-                <br />
-                <br />
-                <p id="feedback" ng-bind="feedback"></p>
+    <div id="login body" ng-app="HappyB" ng-controller="MainCtrl">
+        <form id="login">
+            <h2>Happy Buildings</h2>
+            <input type="text" class="input_field" placeholder="Enter Username" id="username" ng-model ="if_username"/>
+            <!--<div ng-bind="username"></div>-->
+            <input type="password" class="input_field" placeholder="Enter Password" id="password" ng-model ="if_password"/>
+            <!-- <div ng-bind="password"></div>-->
+            <input type="submit" class="submit button" value="Login" ng-click="checkLogin()">
+            <input type="submit" class="submit button" value="Cancel" ng-click="cancelLogin()">
+            <br />
+            <br />
+            <p id="feedback" ng-bind="feedback"></p>
 
-            </form>
-        </div>
+        </form>
     </div>
 </div>
+<!--Login page-->
 
 
-<div id="formcontainer">
+<!--Navagation bar title-->
 <div class="header">
     <h1><center>HAPPY BUILDINGS</h1></center> </h1>
 </div>
+<!--Navagation bar title-->
+
+
+<!--Navagation bar tabs-->
 <div class="tab">
     <button class="tablinks" onclick="openTab(event, 'Building Directory')">Building Directory</button>
     <button class="tablinks" onclick="openTab(event, 'Building Information')">Building Information</button>
@@ -46,6 +50,10 @@
     <button class="tablinks" onclick="openTab(event, 'Work')">Work</button>
     <button class="tablinks" onclick="openTab(event, 'Issue')">Issue</button>
 </div>
+<!--Navagation bar tabs-->
+
+
+<!--Building Directory-->
 <div id="Building Directory" class="tabcontent">
     <h3><center>Building Directory</center></h3>
 
@@ -98,9 +106,11 @@
     <div id="footer"></div><!--end footer-->
 
 
-</div><!--Building Directory end-->
+</div>
+<!--Building Directory-->
 
 
+<!--Building Information-->
 <div id="Building Information" class="tabcontent">
     <h3><center>Building Information</center></h3>
 
@@ -156,19 +166,20 @@
             </form>
 
         </div><!--end main_content-->
-</div>
+    </div>
     <div id="sidebar">
 
 
     </div><!--end sidebar-->
 
     <div class="clear"></div>
-</div><!--end content-->
+
 <div id="footer"></div><!--end footer-->
-
-
 </div>
+<!--Building Information-->
 
+
+<!--Project Information-->
 <div id="Project Information" class="tabcontent">
     <h3><center>Project Information</center></h3>
 
@@ -233,71 +244,69 @@
         <div class="clear"></div>
     </div><!--end content-->
     <div id="footer"></div><!--end footer-->
-
-
-
 </div><!--end-->
+<!--Project Information-->
 
+
+<!--Work-->
 <div id="Work" class="tabcontent">
     <h3><center>Work</center></h3>
 
     <div id="content">
         <div id="main_content">
             <form>
-            <table align="center">
-                <tr>
-                    <td width="43%" class="iTitle">Title:</td>
-                    <td Width="57%"><input type="text" name="iTitle" id="iTitle" size="50" autofocus="autofocus" required="required"></td>
-                </tr>
-                <tr>
-                    <td width="43%" class="wStartDate">Start Date:</td>
-                    <td Width="57%"><input type="wStartDate" name="wStartDate" id="pId" size="50" ></td>
-                </tr>
-                <tr>
-                    <td width="43%" class="wEndDate">End Date:</td>
-                    <td Width="57%"><input type="wEndDate" name="wEndDate" id="pId" size="50" ></td>
-                </tr>
-                <tr>
-                    <td width="43%" class="contractor">Contractor:</td>
-                    <td Width="57%"><input type="text" name="contractor" id="contractor" size="50" ></td>
-                </tr>
-                <tr>
-                    <td width="43%" class="wScope">Scope:</td>
-                    <td Width="57%"><input type="text" name="wScope" id="wScope" size="50" ></td>
-                </tr>
-                <tr>
-                    <td width="43%" class="constuctionType">Construction Type:</td>
-                    <td Width="57%"><input type="text" name="constuctionType" id="constuctionType" size="50" ></td>
-                </tr>
-                <tr>
-                    <td class="comments">Comments:</td>
-                    <td>
-                        <textarea name="message" id="message" cols="50" rows="6"></textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" class="center"><input type"submit" value="Send Now"></td>
-                </tr>
-            </table>
+                <table align="center">
+                    <tr>
+                        <td width="43%" class="iTitle">Title:</td>
+                        <td Width="57%"><input type="text" name="iTitle" id="iTitle" size="50" autofocus="autofocus" required="required"></td>
+                    </tr>
+                    <tr>
+                        <td width="43%" class="wStartDate">Start Date:</td>
+                        <td Width="57%"><input type="wStartDate" name="wStartDate" id="pId" size="50" ></td>
+                    </tr>
+                    <tr>
+                        <td width="43%" class="wEndDate">End Date:</td>
+                        <td Width="57%"><input type="wEndDate" name="wEndDate" id="pId" size="50" ></td>
+                    </tr>
+                    <tr>
+                        <td width="43%" class="contractor">Contractor:</td>
+                        <td Width="57%"><input type="text" name="contractor" id="contractor" size="50" ></td>
+                    </tr>
+                    <tr>
+                        <td width="43%" class="wScope">Scope:</td>
+                        <td Width="57%"><input type="text" name="wScope" id="wScope" size="50" ></td>
+                    </tr>
+                    <tr>
+                        <td width="43%" class="constuctionType">Construction Type:</td>
+                        <td Width="57%"><input type="text" name="constuctionType" id="constuctionType" size="50" ></td>
+                    </tr>
+                    <tr>
+                        <td class="comments">Comments:</td>
+                        <td>
+                            <textarea name="message" id="message" cols="50" rows="6"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="center"><input type"submit" value="Send Now"></td>
+                    </tr>
+                </table>
             </form>
-    </div><!--end main_content-->
+        </div><!--end main_content-->
 
-    <div id="sidebar">
+        <div id="sidebar">
 
 
-    </div><!--end sidebar-->
+        </div><!--end sidebar-->
 
+        <div class="clear"></div>
+    </div><!--end content-->
+    <div id="footer"></div><!--end footer-->
     <div class="clear"></div>
-</div><!--end content-->
-<div id="footer"></div><!--end footer-->
-
-
-
-    <div class="clear"></div>
-</div><!--end content-->
 </div>
+<!--Work-->
 
 
+<!--Issue-->
 <div id="Issue" class="tabcontent">
     <h3><center>Issue</center></h3>
 
@@ -316,7 +325,7 @@
                     <tr>
                         <td class="information">Information:</td>
                         <td>
-                        <textarea name="information" id="information" cols="50" rows="6"></textarea>
+                            <textarea name="information" id="information" cols="50" rows="6"></textarea>
                         </td>
                     </tr>
                     <tr>
@@ -350,11 +359,12 @@
         <div class="clear"></div>
     </div><!--end content-->
     <div id="footer"></div><!--end footer-->
-
-
-</div><!--end-->
-
+</div>
+<!--Issue-->
 
 
 </body>
+<!--Body end-->
+
+
 </html>
