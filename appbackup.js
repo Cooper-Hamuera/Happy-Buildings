@@ -17,9 +17,11 @@ function openTab(evt, cityName) {
 //Navagation bar tabs
 
 
-//Login feedback
+//Controller
 app.controller('MainCtrl', function($scope) {
     $scope.feedback = "";
+    $scope.loginVisible = true;
+    $scope.directoryVisible = false;
 
     //check user input against credentials listed
     $scope.checkLogin=function(){
@@ -28,6 +30,8 @@ app.controller('MainCtrl', function($scope) {
 
         if($scope.if_username==usernameAccess & $scope.if_password==passwordAccess){
             $scope.feedback="Login Successful";
+            $scope.loginVisible = false;
+            $scope.directoryVisible = true;
         }else{
             $scope.feedback="Username or Password Incorrect";
         }
