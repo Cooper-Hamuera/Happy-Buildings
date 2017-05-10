@@ -17,22 +17,24 @@ function openTab(evt, cityName) {
 //Navagation bar tabs
 
 
-//Login feedback
+//Controller
 app.controller('MainCtrl', function($scope) {
     $scope.feedback = "";
+    $scope.loginVisible = true;
+    $scope.directoryVisible = false;
 
     //check user input against credentials listed
-    $scope.checkLogin=function() {
-        var usernameAccess = "admin";
-        var passwordAccess = "password";
+    $scope.checkLogin=function(){
+        var usernameAccess="admin";
+        var passwordAccess="password";
 
-        if ($scope.if_username == usernameAccess & $scope.if_password == passwordAccess) {
-            $scope.feedback = "Login Successful";
-
+        if($scope.if_username==usernameAccess & $scope.if_password==passwordAccess){
+            $scope.feedback="Login Successful";
+            $scope.loginVisible = false;
+            $scope.directoryVisible = true;
         }else{
             $scope.feedback="Username or Password Incorrect";
         }
-
     };
 
     //cancel button clears the username and password fields
@@ -43,13 +45,4 @@ app.controller('MainCtrl', function($scope) {
     };
 
 });
-//End Login feedback
-
-//Hide feature
-.module("hidemodule")
-.controller('hidecontrol', function($scope){
-
-    var x = document.getElementById('EiffelTower');
-    $scope.loginpage=EiffelTower;
-
-}
+//Login feedback

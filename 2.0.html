@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="HappyB"><!--JS -->
 
 <!--source list-->
 <head>
+    <script>document.write('<base href="' + document.location + '" />');</script>
     <script data-require="angular.js@1.4.x" src="https://code.angularjs.org/1.4.12/angular.js" data-semver="1.4.9"></script>
     <script src="app.js"></script>
     <link rel="stylesheet" href="style.css">
@@ -11,16 +12,10 @@
 
 
 <!--body start-->
-<body>
-
+<body ng-controller="MainCtrl" >
 
 <!--Login page-->
-<body ng-app="hidemodule">
-<div ng-controller="hidecontrol"> <!--Hide controller-->
-<input type="checkbox" ng-model="hideLogin"/>
-
-<div id="EiffelTower" ng-controller="MainCtrl" ng-hide="hideLogin">
-    <div id="login body" ng-app="HappyB" ng-controller="MainCtrl">
+<div id="loginDisplay"  ng-show = "loginVisible"> <!--Show/Hide DIV-->
 
         <form id="login">
             <h2>Happy Buildings</h2>
@@ -33,16 +28,13 @@
             <br />
             <br />
             <p id="feedback" ng-bind="feedback"></p>
-
         </form>
-    </div>
+
 </div>
-</div> <!--Hide controller-->
-</body>
 <!--Login page-->
 
-
 <!--Navagation bar title-->
+<div id="directoryDisplay"  ng-show="directoryVisible"> <!--Show/Hide DIV-->
 <div class="header">
     <h1><center>HAPPY BUILDINGS</h1></center> </h1>
 </div>
@@ -181,7 +173,7 @@
 
     <div class="clear"></div>
 
-<div id="footer"></div><!--end footer-->
+    <div id="footer"></div><!--end footer-->
 </div>
 <!--Building Information-->
 
@@ -366,6 +358,7 @@
         <div class="clear"></div>
     </div><!--end content-->
     <div id="footer"></div><!--end footer-->
+</div>
 </div>
 <!--Issue-->
 
