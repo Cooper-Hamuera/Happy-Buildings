@@ -1,40 +1,44 @@
 <!DOCTYPE html>
-<html ng-app="HappyB"><!--app.js, var app []-->
+<html ng-app="HappyB"><!--[Angular]app.js, var app []-->
 
 <!--source list-->
 <head>
+    <meta charset="utf-8" />
     <script>document.write('<base href="' + document.location + '" />');</script>
+    <link rel="stylesheet" href="style.css">
     <script data-require="angular.js@1.4.x" src="https://code.angularjs.org/1.4.12/angular.js" data-semver="1.4.9"></script>
     <script src="app.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <script src="user_list.json"></script>
 </head>
 <!--source list-->
 
 
 <!--body start-->
-<body ng-controller="MainCtrl" ><!--app.js, app.controller-->
+<body ng-controller="MainCtrl" ><!--[Angular] app.js, app.controller-->
+
 
 <!--Login page-->
-<div id="loginDisplay"  ng-show = "loginVisible"> <!--Show/Hide DIV-->
+<div id="loginDisplay"  ng-show = "loginVisible"> <!--[Angular] Show/Hide DIV-->
 
     <form id="login">
         <h2>Happy Buildings</h2>
-        <input type="text" class="input_field" placeholder="Enter Username" id="username" ng-model ="if_username"/>
+        <input class= "if" type="text" placeholder="Enter Username" id="username" ng-model ="username"/>
         <!--<div ng-bind="username"></div>-->
-        <input type="password" class="input_field" placeholder="Enter Password" id="password" ng-model ="if_password"/>
+        <input class= "if" type="password" placeholder="Enter Password" id="password" ng-model ="password"/>
         <!-- <div ng-bind="password"></div>-->
         <input type="submit" class="submit button" value="Login" ng-click="checkLogin()">
         <input type="submit" class="submit button" value="Cancel" ng-click="cancelLogin()">
         <br />
         <br />
-        <p id="feedback" ng-bind="feedback"></p>
+        <p id="feedback" ng-bind="feedback"></p> <!--[Angular] Feedback-->
     </form>
 
 </div>
 <!--Login page-->
 
+
 <!--Navagation bar title-->
-<div id="directoryDisplay"  ng-show="directoryVisible"> <!--Show/Hide DIV-->
+<div id="indexDisplay"  ng-show = "indexVisible"> <!--[Angular] Show/Hide DIV-->
     <div class="header">
         <h1><center>HAPPY BUILDINGS</h1></center> </h1>
     </div>
@@ -350,6 +354,8 @@
             </div><!--end main_content-->
 
             <div id="sidebar">
+
+
 
             </div><!--end sidebar-->
 
