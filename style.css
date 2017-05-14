@@ -3,15 +3,7 @@ body {
   background-size: 100% 100%;
 }
 
-<<<<<<< HEAD
-div.loginPage {
-  /*possibly remove
-  */
-  background-color: #4484c3;
-}
 
-=======
->>>>>>> master
 #login{
   position: absolute;
   top:35%;
