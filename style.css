@@ -1,10 +1,14 @@
-body{
-  div.EiffelTower {
-    background: url("https://s-media-cache-ak0.pinimg.com/originals/f7/ab/d7/f7abd7a179f7c702c0d25f59a4d99250.jpg") no-repeat center center fixed;
-    background-size: 100% 100%;
-  }
-
+body {
+  background: url("http://www.imgbase.info/images/safe-wallpapers/miscellaneous/8_bit/47432_8_bit_8_bit_cityscape.jpg") no-repeat center center fixed;
+  background-size: 100% 100%;
 }
+
+div.loginPage {
+  /*
+  */
+  background-color: #4484c3;
+}
+
 #login{
   position: absolute;
   top:35%;
@@ -15,9 +19,9 @@ body{
   text-align: center;
   color: Sienna;
   font-family: font-family: "Lato", sans-serif, bold;
-  font-size: 100px;
-
+  font-size: 80px;
 }
+
 #login input{
   display: block;
   width: 320px;
@@ -33,16 +37,8 @@ body{
   box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
   margin-bottom: 10px;
 }
-#login #login-btn{
-  background: #55acee;
-  font-size: 18px;
-  text-align: center;
-  vertical-align: middle;
-  line-height: 20x;
-}
-login body{
 
-}
+
 body {
   font-family: "Lato", sans-serif, bold;
   font-size: 30px;
