@@ -17,7 +17,7 @@ function openTab(evt, cityName) {
 //Navagation bar tabs
 
 
-//[Angular] Controller
+//[Angular] Controller index
 app.controller('MainCtrl', function($scope, $http) {
     $scope.loginVisible = true;         //login visibility (Show/Hide)
     $scope.indexVisible = false;        //index visibility (Show/Hide)
