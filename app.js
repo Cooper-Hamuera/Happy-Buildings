@@ -27,13 +27,30 @@ app.controller('MainCtrl', function($scope, $http) {
     $scope.usernameValid = false;       //Username validation
     $scope.passwordValid = false;       //Password validation
 
+    //user access type
+    $scope.user_admin = false;
+    $scope.user_manager = false;
+    $scope.user_owner = false;
+    $scope.user_contractor = false;
 
-    //JSON login
+
+    //JSON file check and stores info for each file
     $scope.loginData = null;
-    $scope.loginLocation = 'user_list.json';    //Local JSON file *requires HTML header source
+    $scope.loginLocation = 'user_list.json';
+    $scope.buildingData= null;
+    $scope.buildingLocation = 'building_dir.json';
+    $scope.project= null;
+    $scope.projectLocation = 'project.json';
+    $scope.work= null;
+    $scope.workLocation = 'work.json';
+    $scope.issue= null;
+    $scope.issueLocation = 'issue.json';
 
-      /**
-      Server URL's
+
+    /**
+
+       >>Local JSON file requires HTML header source
+       >>Server URL's list
 
        $scope.loginLocation = 'https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/user_list.json';
        $scope.loginLocation = 'https://happybuildings.sim.vuw.ac.nz/api/coopersamu/user_list.json';
@@ -41,23 +58,24 @@ app.controller('MainCtrl', function($scope, $http) {
        $scope.buildingDir = https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/building_dir.json;
        $scope.buildingDir = https://happybuildings.sim.vuw.ac.nz/api/coopersamu/building_dir.json;
 
-       $scope.buildingDir = https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/building_dir.json;
-       $scope.buildingDir = https://happybuildings.sim.vuw.ac.nz/api/coopersamu/building_dir.json;
+       $scope.project = https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/project.json;
+       $scope.project = https://happybuildings.sim.vuw.ac.nz/api/coopersamu/project.json;
 
-       $scope.buildingDir = https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/building_dir.json;
-       $scope.buildingDir = https://happybuildings.sim.vuw.ac.nz/api/coopersamu/building_dir.json;
+       $scope.work = https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/work.json;
+       $scope.work = https://happybuildings.sim.vuw.ac.nz/api/coopersamu/work.json;
 
-       $scope.buildingDir = https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/building_dir.json;
-       $scope.buildingDir = https://happybuildings.sim.vuw.ac.nz/api/coopersamu/building_dir.json;
-      **/
+       $scope.issue = https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/issue.json;
+       $scope.issue = https://happybuildings.sim.vuw.ac.nz/api/coopersamu/issue.json;
 
-    $scope.get = $http.get($scope.loginLocation)      //Fetch the JSON file
+       **/
+
+    $scope.get = $http.get($scope.loginLocation)                                //Fetch the JSON file from the location in the variable
         .then(
             function successCall(response) {
-                $scope.loginData = response.data.users; //Saves json response into variable
+                $scope.loginData = response.data.users;                         //Saves json response into this variable
             }, function errorCall(response) {
-                $scope.feedback = "Error reading file: " + response.status;
-                $scope.loginData = null; // if there is an error your data wont be populated
+                $scope.feedback = "Error reading file: " + response.status;     // displays feedback error if JSON form incorrect
+                $scope.loginData = null;                                        // incorrect JSON form will keep it set at null
             }
         );
 
@@ -65,20 +83,29 @@ app.controller('MainCtrl', function($scope, $http) {
         if ($scope.loginData === null) {
             $scope.feedback = "Sorry, error reading file";
         }
-        for (i = 0; $scope.loginData !== null && i < $scope.loginData.length; i++) { //reads one element at a time
-            if ($scope.loginData[i].LoginName == $scope.username) { //if that element, equals what the user has inputed
-                $scope.usernameValid = true; //then the username is valid
+        for (i = 0; $scope.loginData !== null && i < $scope.loginData.length; i++) {    //reads one element at a time from the user list
+            if ($scope.loginData[i].LoginName == $scope.username) {                     //if in the element, username equals what the user has inputted
+                $scope.usernameValid = true;                                            //then the username is valid
             }
-            if ($scope.loginData[i].Password == $scope.password) { //if that element equals the password the user has inputted
-                $scope.passwordValid = true; // then the password is valid
+            if ($scope.loginData[i].Password == $scope.password) {                      //if in the element, password equals what the user has inputted
+                $scope.passwordValid = true;                                            //then the password is valid
+            }
+            if ($scope.loginData[i].UserType == "admin"){                               //if in the element check the user type is admin, set to true
+                $scope.user_admin = true;
+            }else if($scope.loginData[i].UserType == "manager"){                        //if in the element check the user type is manager, set to true
+                $scope.user_manager = true;
+            }else if($scope.loginData[i].UserType == "owner"){                          //if in the element check the user type is owner, set to true
+                $scope.user_owner = true;
+            }else if($scope.loginData[i].UserType == "contractor"){                     //if in the element check the user type is contractor, set to true
+                $scope.user_contractor = true;
             }
         }
 
         //check login data functions
-        if ($scope.usernameValid && $scope.passwordValid) { //if both the username and password are contained in the server
-            $scope.feedback = "Login successful as " + $scope.username; //your login will be successful and..
-            $scope.loginVisible = false; //login form will then be hidden and..
-            $scope.indexVisible = true; // the directory will be displayed
+        if ($scope.usernameValid && $scope.passwordValid) {                     //if both the username and password are contained in the server
+            $scope.feedback = "Login successful as " + $scope.username;         //Login feedback displayed
+            $scope.loginVisible = false;                                        //Hide login form
+            $scope.indexVisible = true;                                         //Show index
         } else {
             $scope.feedback = "Login failed";
         }
