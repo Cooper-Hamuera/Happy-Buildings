@@ -45,11 +45,11 @@ body {
   padding: 10px 1px;
 }
 
-body {
+/*body {
   font-family: "Lato", sans-serif, bold;
-  font-size: 30px;
+  font-size: 10px;
   color:#130d06;
-}
+}*/
 
 div.header {
   width: 100%
@@ -108,55 +108,95 @@ div.Building Directory{
   border-radius: 5px;
   background: rgba(100, 154, 254, 0.5);
   padding: 20px;
-  width: 50%;
+  width: 90%;
+  margin: 20px 40px;
+  fontsize: 20px;
+  font-family:"Lato", sans-serif, bold;
+}
+table#bdInfo{
+  table-layout:fixed;
+  border-radius: 5px;
+  background: rgba(200, 154, 254, 0.5);
+  padding: 40px;
+  width: 100%;
+  height: 80%;
   margin: auto;
   fontsize: 28px;
   font-family:"Lato", sans-serif, bold;
-}
-#bd_id{
-  width: 43%;
-  fontsize: 40px;
 }
 
 /* Styles the information of Building Information form*/
 #bi_main_content{
   border-radius: 5px;
   background: rgba(100, 154, 254, 0.5);
-  padding: 20px;
-  width: 50%;
+  padding: 40px;
+  width: 90%;
   margin: auto;
   fontsize: 28px;
   font-family:"Lato", sans-serif, bold;
 }
 
+
+
+table#pList{
+  table-layout:fixed;
+  border-radius: 5px;
+  background: rgba(200, 154, 254, 0.5);
+  padding: 40px;
+  width: 100%;
+  height: 80%;
+  margin: auto;
+  fontsize: 28px;
+  font-family:"Lato", sans-serif, bold;
+}
 /* Styles the information of Project Information form*/
 #pi_main_content{
   border-radius: 5px;
   background: rgba(100, 154, 254, 0.5);
   padding: 20px;
-  width: 50%;
+  width: 90%;
   margin: auto;
   fontsize: 28px;
   font-family:"Lato", sans-serif, bold;
 }
-
+table#wList {
+  table-layout: fixed;
+  border-radius: 5px;
+  background: rgba(200, 154, 254, 0.5);
+  padding: 40px;
+  width: 100%;
+  height: 80%;
+  margin: auto;
+  fontsize: 28px;
+  font-family: "Lato", sans-serif, bold;
+}
 /* Styles the information of Work form*/
 #w_main_content{
   border-radius: 5px;
   background: rgba(100, 154, 254, 0.5);
   padding: 20px;
-  width: 50%;
+  width: 90%;
   margin: auto;
   fontsize: 28px;
   font-family:"Lato", sans-serif, bold;
 }
-
+table#iList {
+  table-layout: fixed;
+  border-radius: 5px;
+  background: rgba(200, 154, 254, 0.5);
+  padding: 40px;
+  width: 100%;
+  height: 80%;
+  margin: auto;
+  fontsize: 28px;
+  font-family: "Lato", sans-serif, bold;
+}
 /* Styles the information of Issue form*/
 #i_main_content{
   border-radius: 5px;
   background: rgba(100, 154, 254, 0.5);
   padding: 20px;
-  width: 50%;
+  width: 90%;
   margin: auto;
   fontsize: 28px;
   font-family:"Lato", sans-serif, bold;

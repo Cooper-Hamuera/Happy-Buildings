@@ -62,20 +62,30 @@
     <h3><center>Building Directory</center></h3>
 
     <div id="bd_content">
-      <div id="bd_main_content">
+      <div id="bd_main_content" align="center">
         <form>
-          <table align="center">
+          <table id="bdInfo" align="center">
             <tr>
               <td id="bd_id" class="right">Building ID:</td>
-              <td Width="57%"><input type="text" name="bId" id="bId" size="50" autofocus="autofocus" required="required"></td>
-            </tr>
-            <tr>
               <td class="right">Building Name:</td>
-              <td Width="57%"><input type="text" building name="building name" id="bName" size="50" required="required"></td>
+              <td class="right">Building Address:</td>
+              </td>
+            </tr>
+              <td Width="57%"><input type="text" building name="building name" id="bName" size="25" required="required"></td>
+              <td Width="57%"><input type="text" name="bId" id="bId" size="25" autofocus="autofocus" required="required"></td>
+              <td Width="57%"><input type="text" name="bId" id="bId" size="25" autofocus="autofocus" required="required"></td>
+
+          <div ng-controller="Colin" layout_fill layout="column" class="inset" ng-cloak paddi>
+            <div layout="row" layout-align="space-around">
+              <div style="width:50px"></div>
+            <md-button class="md-raised" ng-click="showAction()">
+            +
+            </md-button>
+            </div>
             </tr>
 
-            <tr>
-              <td class="right">Building Address</td>
+<!--            <tr>
+
               <td>
                 <select name+"found" id="foundyou">
                 <option value="">Select One</option>
@@ -84,10 +94,17 @@
                 <option value="address 3">Address 3</option>
                 </select>
               </td>
-            </tr>
+            </tr>  -->
 
+
+
+          </table>
+          <table id="bd_com">
             <tr>
               <td class="comments">Comments:</td>
+
+            </tr>
+            <tr>
               <td>
                 <textarea name="message" id="message" cols="50" rows="6"></textarea>
               </td>
@@ -119,7 +136,8 @@
     <h3><center>Building Information</center></h3>
 
     <div id="bi_content">
-      <div id="bi_main_content">
+      <div id="bi_main_content" align="center">
+        <div id="bi_info">
         <form>
           <table align="center">
             <tr>
@@ -133,7 +151,7 @@
             <tr>
               <td class="right">Building Address</td>
               <td>
-                <select name+"found" id="foundyou">
+                <select name="found" id="foundyou">
                 <option value="">Select One</option>
                 <option value="address 1">Address 1</option>
                 <option value="address 3">Address 2</option>
@@ -153,19 +171,38 @@
               <td width="43%" class="right">Construction Type:</td>
               <td width="57%"><input type="text" name="cType" id="cType" size="50" ></td>
             </tr>
+        </div>
+           <div id="bi_plist">
             <tr>
               <td width="43%" class="right">Project List:</td>
-              <td width="57%"><input type="text" name="pList" id="pList" size="50" ></td>
+            </tr>
+            <table id="pList" cellpadding="10">
+            <tr>
+              <td width="43%" class="right">Project ID:</td>
+              <td width="43%" class="right">Status:</td>
+              <td width="43%" class="right">Start Date:</td>
+              <td width="43%" class="right">End Date:</td>
             </tr>
             <tr>
+              <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
+              <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
+              <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
+              <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
+            </tr>
+            </table>
+           </div>
+      <!--      <tr>
               <td class="comments">Comments:</td>
+
+            </tr>
+            <tr>
               <td>
                 <textarea name="message" id="message" cols="50" rows="6"></textarea>
               </td>
             </tr>
             <tr>
               <td colspan="2" class="center"><input <type"submit" value="Send Now"></td>
-            </tr>
+            </tr> -->
           </table>
         </form>
 
@@ -188,7 +225,7 @@
     <h3><center>Project Information</center></h3>
 
     <div id="pi_content">
-      <div id="pi_main_content">
+      <div id="pi_main_content" align="center">
         <form>
           <table align="center">
             <tr>
@@ -212,32 +249,45 @@
               <td Width="57%"><input type="text" name="manager" id="manager" size="50" ></td>
             </tr>
             <tr>
-              <td width="43%" class="right">Manager's Contact Details:</td>
-              <td Width="57%"><input type="text" name="mCon" id="mCon" size="50" ></td>
-            </tr>
-            <tr>
-              <td width="43%" class="right">Scope:</td>
-              <td Width="57%"><input type="text" name="scope" id="scope" size="50" ></td>
-            </tr>
-            <tr>
               <td width="43%" class="right">Work List:</td>
               <td Width="57%"><input type="text" name="workList" id="workList" size="50" ></td>
             </tr>
-            <tr>
-              <td width="43%" class="right">Issue List:</td>
-              <td Width="57%"><input type="text" name="issueList" id="issueList" size="50" ></td>
-            </tr>
-            <tr>
-              <td class="comments">Comments:</td>
-              <td>
-                <textarea name="message" id="message" cols="50" rows="6"></textarea>
-              </td>
-            </tr>
-            <tr>
-              <td colspan="2" class="center"><input type"submit" value="Send Now"></td>
-            </tr>
-          </table>
+            <div id="bi_plist">
+              <tr>
+                <td width="43%" class="right">Project List:</td>
+              </tr>
+              <table id="wList" cellpadding="10">
+                <tr>
+                  <td width="43%" class="right">Work ID:</td>
+                  <td width="43%" class="right">Start Date:</td>
+                  <td width="43%" class="right">End Date:</td>
+                  <td width="43%" class="right">Contractor:</td>
+                </tr>
+                <tr>
+                  <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
+                  <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
+                  <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
+                  <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
+                </tr>
+              </table>
+
+            <table id="p_com">
+              <tr>
+                <td class="comments">Comments:</td>
+
+              </tr>
+              <tr>
+                <td>
+                  <textarea name="message" id="message" cols="50" rows="6"></textarea>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" class="center"><input <type"submit" value="Send Now"></td>
+              </tr>
+            </table>
+
         </form>
+      </div>
 
       </div><!--end main_content-->
       <div id="sidebar">
@@ -257,12 +307,12 @@
     <h3><center>Work</center></h3>
 
     <div id="w_content">
-      <div id="w_main_content">
+      <div id="w_main_content" align="center">
         <form>
           <table align="center">
             <tr>
               <td width="43%" class="iTitle">Title:</td>
-              <td Width="57%"><input type="text" name="iTitle" id="iTitle" size="50" autofocus="autofocus" required="required"></td>
+              <td Width="57%"><input type="text" name="wTitle" id="wTitle" size="50" autofocus="autofocus" required="required"></td>
             </tr>
             <tr>
               <td width="43%" class="wStartDate">Start Date:</td>
@@ -277,22 +327,37 @@
               <td Width="57%"><input type="text" name="contractor" id="contractor" size="50" ></td>
             </tr>
             <tr>
-              <td width="43%" class="wScope">Scope:</td>
-              <td Width="57%"><input type="text" name="wScope" id="wScope" size="50" ></td>
-            </tr>
-            <tr>
               <td width="43%" class="constuctionType">Construction Type:</td>
               <td Width="57%"><input type="text" name="constuctionType" id="constuctionType" size="50" ></td>
             </tr>
-            <tr>
-              <td class="comments">Comments:</td>
-              <td>
-                <textarea name="message" id="message" cols="50" rows="6"></textarea>
-              </td>
-            </tr>
-            <tr>
-              <td colspan="2" class="center"><input type"submit" value="Send Now"></td>
-            </tr>
+            <table id="iList" cellpadding="10">
+              <tr>
+                <td width="43%" class="right">Work ID:</td>
+                <td width="43%" class="right">Start Date:</td>
+                <td width="43%" class="right">End Date:</td>
+                <td width="43%" class="right">Contractor:</td>
+              </tr>
+              <tr>
+                <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
+                <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
+                <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
+                <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
+              </tr>
+            </table>
+            <table id="w_com">
+              <tr>
+                <td class="comments">Comments:</td>
+
+              </tr>
+              <tr>
+                <td>
+                  <textarea name="message" id="message" cols="50" rows="6"></textarea>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" class="center"><input <type"submit" value="Send Now"></td>
+              </tr>
+            </table>
           </table>
         </form>
       </div><!--end main_content-->
@@ -315,23 +380,18 @@
     <h3><center>Issue</center></h3>
 
     <div id="i_content">
-      <div id="i_main_content">
+      <div id="i_main_content" align="center">
         <form id="simple form">
           <table align="center">
             <tr>
-              <td width="43%" class="iTitle">Title:</td>
+              <td width="43%" class="iTitle">Work ID:</td>
               <td Width="57%"><input type="text" name="iTitle" id="iTitle" size="50" autofocus="autofocus" required="required"></td>
             </tr>
             <tr>
-              <td width="43%" class="pId">Project ID:</td>
+              <td width="43%" class="pId">Title:</td>
               <td Width="57%"><input type="text" name="pId" id="pId" size="50" ></td>
             </tr>
-            <tr>
-              <td class="information">Information:</td>
-              <td>
-                <textarea name="information" id="information" cols="50" rows="6"></textarea>
-              </td>
-            </tr>
+
             <tr>
               <td width="43%" class="iDate">Issue Date:</td>
               <td Width="57%"><input type="text" name="iDate" id="iDate" size="50" ></td>
@@ -340,15 +400,28 @@
               <td width="43%" class="raised">Raised by:</td>
               <td Width="57%"><input type="text" name="raised" id="raised" size="50" ></td>
             </tr>
+            <table id="w_com">
             <tr>
-              <td class="comments">Comments:</td>
+              <td class="information">Information:</td>
+            </tr>
+            <tr>
               <td>
-                <textarea name="message" id="message" cols="50" rows="6"></textarea>
+                <textarea name="information" id="information" cols="50" rows="6"></textarea>
               </td>
             </tr>
-            <tr>
-              <td colspan="2" class="center"><input type"submit" value="Send Now"></td>
-            </tr>
+              <tr>
+                <td class="comments">Comments:</td>
+
+              </tr>
+              <tr>
+                <td>
+                  <textarea name="message" id="message" cols="50" rows="6"></textarea>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" class="center"><input <type"submit" value="Send Now"></td>
+              </tr>
+            </table>
           </table>
         </form>
 
