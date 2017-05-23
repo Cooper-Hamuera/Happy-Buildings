@@ -15,7 +15,7 @@ body {
 #login h2{
   text-align: center;
   color: dodgerblue;
-  font-family: Aclonica;
+  font-family: "Lato", sans-serif, bold;
   font-size: 80px;
 }
 
@@ -38,18 +38,18 @@ body {
   font-family:"Lato", sans-serif, bold;
   color: DarkGray;
   outline: none;
-  border:1px solid rgba(0,0,0,0.3);
+  border:1px solid rgba(0,0,0,0.30);
   border-radius: 5px;
   box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
   margin: 2% 5%;
   padding: 10px 1px;
 }
 
-/*body {
+body {
   font-family: "Lato", sans-serif, bold;
-  font-size: 10px;
-  color:#130d06;
-}*/
+  font-size: 30px;
+  color:#cc644a;
+}
 
 div.header {
   width: 100%
@@ -106,7 +106,7 @@ div.Building Directory{
 /* Styles the information of Building Directory form*/
 #bd_main_content{
   border-radius: 5px;
-  background: rgba(100, 154, 254, 0.5);
+  background: rgba(100, 154, 254, 0.3);
   padding: 20px;
   width: 90%;
   margin: 20px 40px;
@@ -116,7 +116,7 @@ div.Building Directory{
 table#bdInfo{
   table-layout:fixed;
   border-radius: 5px;
-  background: rgba(200, 154, 254, 0.5);
+  background: rgba(200, 154, 254, 0.3);
   padding: 40px;
   width: 100%;
   height: 80%;
@@ -128,7 +128,7 @@ table#bdInfo{
 /* Styles the information of Building Information form*/
 #bi_main_content{
   border-radius: 5px;
-  background: rgba(100, 154, 254, 0.5);
+  background: rgba(100, 154, 254, 0.3);
   padding: 40px;
   width: 90%;
   margin: auto;
@@ -141,7 +141,7 @@ table#bdInfo{
 table#pList{
   table-layout:fixed;
   border-radius: 5px;
-  background: rgba(200, 154, 254, 0.5);
+  background: rgba(200, 154, 254, 0.3);
   padding: 40px;
   width: 100%;
   height: 80%;
@@ -152,7 +152,7 @@ table#pList{
 /* Styles the information of Project Information form*/
 #pi_main_content{
   border-radius: 5px;
-  background: rgba(100, 154, 254, 0.5);
+  background: rgba(100, 154, 254, 0.3);
   padding: 20px;
   width: 90%;
   margin: auto;
@@ -162,7 +162,7 @@ table#pList{
 table#wList {
   table-layout: fixed;
   border-radius: 5px;
-  background: rgba(200, 154, 254, 0.5);
+  background: rgba(200, 154, 254, 0.3);
   padding: 40px;
   width: 100%;
   height: 80%;
@@ -173,7 +173,7 @@ table#wList {
 /* Styles the information of Work form*/
 #w_main_content{
   border-radius: 5px;
-  background: rgba(100, 154, 254, 0.5);
+  background: rgba(100, 154, 254, 0.3);
   padding: 20px;
   width: 90%;
   margin: auto;
@@ -183,7 +183,7 @@ table#wList {
 table#iList {
   table-layout: fixed;
   border-radius: 5px;
-  background: rgba(200, 154, 254, 0.5);
+  background: rgba(200, 154, 254, 0.3);
   padding: 40px;
   width: 100%;
   height: 80%;
@@ -194,7 +194,7 @@ table#iList {
 /* Styles the information of Issue form*/
 #i_main_content{
   border-radius: 5px;
-  background: rgba(100, 154, 254, 0.5);
+  background: rgba(100, 154, 254, 0.3);
   padding: 20px;
   width: 90%;
   margin: auto;

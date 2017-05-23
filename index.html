@@ -69,6 +69,13 @@
               <td id="bd_id" class="right">Building ID:</td>
               <td class="right">Building Name:</td>
               <td class="right">Building Address:</td>
+              <td
+              <input type="text" ng-model="input">
+              <button type="button" ng-click="add()">View</button>
+              <button type="submit" ng-click="add()">Add</button>
+              <li ng-repeat="item in items">
+              <button ng-click="remove($index)">Remove</button>
+              </li>
               </td>
             </tr>
               <td Width="57%"><input type="text" building name="building name" id="bName" size="25" required="required"></td>
@@ -142,6 +149,7 @@
             </tr>
             <tr>
               <td class="right">Building Address</td>
+
               <td>
                 <select name="found" id="foundyou">
                 <option value="">Select One</option>
@@ -175,11 +183,20 @@
               <td width="43%" class="right">Start Date:</td>
               <td width="43%" class="right">End Date:</td>
             </tr>
+
             <tr>
               <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
               <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
               <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
               <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
+              <td
+              <input type="text" ng-model="input">
+              <button type="button" ng-click="add()">View</button>
+              <button type="submit" ng-click="add()">Add</button>
+              <li ng-repeat="item in items">
+                <button ng-click="remove($index)">Remove</button>
+              </li>
+              </td>
             </tr>
             </table>
            </div>
@@ -260,6 +277,14 @@
                   <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
                   <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
                   <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
+                  <td
+                  <input type="text" ng-model="input">
+                  <button type="button" ng-click="add()">View</button>
+                  <button type="submit" ng-click="add()">Add</button>
+                  <li ng-repeat="item in items">
+                    <button ng-click="remove($index)">Remove</button>
+                  </li>
+                  </td>
                 </tr>
               </table>
 
@@ -329,11 +354,20 @@
                 <td width="43%" class="right">End Date:</td>
                 <td width="43%" class="right">Contractor:</td>
               </tr>
+
               <tr>
                 <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
                 <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
                 <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
                 <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
+                <td
+                <input type="text" ng-model="input">
+                <button type="button" ng-click="add()">View</button>
+                <button type="submit" ng-click="add()">Add</button>
+                <li ng-repeat="item in items">
+                  <button ng-click="remove($index)">Remove</button>
+                </li>
+                </td>
               </tr>
             </table>
             <table id="w_com">
@@ -405,6 +439,7 @@
                 <td class="comments">Comments:</td>
 
               </tr>
+
               <tr>
                 <td>
                   <textarea name="message" id="message" cols="50" rows="6"></textarea>
@@ -412,6 +447,14 @@
               </tr>
               <tr>
                 <td colspan="2" class="center"><input <type"submit" value="Send Now"></td>
+                <td
+                <input type="text" ng-model="input">
+                <button type="button" ng-click="add()">View</button>
+                <button type="submit" ng-click="add()">Add</button>
+                <li ng-repeat="item in items">
+                  <button ng-click="remove($index)">Remove</button>
+                </li>
+                </td>
               </tr>
             </table>
           </table>
