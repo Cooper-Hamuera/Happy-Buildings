@@ -41,7 +41,7 @@
 <!--Navagation bar title-->
 <div id="indexDisplay"  ng-show = "indexVisible"> <!--[Angular] Show/Hide DIV-->
   <div class="header">
-    <h1><center>HAPPY BUILDINGS</h1></center> </h1>
+    <h1><center>HAPPY BUILDINGS</center> </h1>
   </div>
   <!--Navagation bar title-->
 
@@ -66,21 +66,25 @@
         <form>
           <table id="bdInfo" align="center">
             <tr>
-              <td id="bd_id" class="right">Building ID:</td>
+              <td class="right">Building ID:</td>
               <td class="right">Building Name:</td>
               <td class="right">Building Address:</td>
-              <td
-              <input type="text" ng-model="input">
-              <button type="button" ng-click="add()">View</button>
-              <button type="submit" ng-click="add()">Add</button>
-              <li ng-repeat="item in items">
-              <button ng-click="remove($index)">Remove</button>
-              </li>
-              </td>
+              <td class="right">Building Owner:</td>
+
             </tr>
-              <td Width="57%"><input type="text" building name="building name" id="bName" size="25" required="required"></td>
-              <td Width="57%"><input type="text" name="bId" id="bId" size="25" autofocus="autofocus" required="required"></td>
-              <td Width="57%"><input type="text" name="bId" id="bId" size="25" autofocus="autofocus" required="required"></td>
+            <td Width="57%"><input type="text" name="bId" id="b_Id" size="25" autofocus="autofocus" required="required"></td>
+            <td Width="57%"><input type="text" name="building name" id="b_Name" size="25" required="required"></td>
+            <td Width="57%"><input type="text" name="bAddress" id="b_Ad" size="25" required="required"></td>
+            <td Width="57%"><input type="text" name="bOwner" id="b_Owner" size="25" required="required"></td>
+            <td ng-model="input">
+
+              <button type="button" ng-click="add()">View</button>
+              <button type="submit" ng-click="add()">+</button>
+              <button type="submit" ng-click="add()">-</button>
+              <li ng-repeat="item in items">
+                <button ng-click="remove($index)">Remove</button>
+              </li>
+            </td>
             </tr>
 
 <!--            <tr>
@@ -95,36 +99,23 @@
               </td>
             </tr>  -->
 
+            </table>
+            <table id="bd_com">
+              <tr>
+                <td class="comments">Comments:</td>
 
+              </tr>
+              <tr>
+                <td>
+                  <textarea name="message" id="bd_message" cols="50" rows="6"></textarea>
+                </td>
+              </tr>
+            </table>
+          </form>
 
-          </table>
-          <table id="bd_com">
-            <tr>
-              <td class="comments">Comments:</td>
+        </div><!--end main_content-->
 
-            </tr>
-            <tr>
-              <td>
-                <textarea name="message" id="message" cols="50" rows="6"></textarea>
-              </td>
-            </tr>
-            <tr>
-              <td colspan="2" class="center"><input <type"submit" value="Send Now"></td>
-            </tr>
-          </table>
-        </form>
-
-      </div><!--end main_content-->
-
-      <div id="sidebar">
-
-
-      </div><!--end sidebar-->
-
-      <div class="clear"></div>
     </div><!--end content-->
-    <div id="footer"></div><!--end footer-->
-
 
   </div>
   <!--Building Directory-->
@@ -141,11 +132,11 @@
           <table align="center">
             <tr>
               <td width="43%" class="right">Building ID:</td>
-              <td width="57%" ><input type="text" name="bId" id="bId" size="50" autofocus="autofocus" required="required"></td>
+              <td width="57%" ><input type="text" name="bId" id="bi_bId" size="50" autofocus="autofocus" required="required"></td>
             </tr>
             <tr>
               <td width="43%" class="right">Building Name:</td>
-              <td width="57%"><input type="text" name="bName" id="bName" size="50" ></td>
+              <td width="57%"><input type="text" name="bName" id="bi_bName" size="50" ></td>
             </tr>
             <tr>
               <td class="right">Building Address</td>
@@ -161,18 +152,18 @@
             </tr>
             <tr>
               <td width="43%" class="right">Building Owner:</td>
-              <td width="57%"><input type="text" name="bOwn" id="bOwn" size="50" ></td>
+              <td width="57%"><input type="text" name="bOwn" id="bi_bOwn" size="50" ></td>
             </tr>
             <tr>
               <td width="43%" class="right">Building Type:</td>
-              <td width="57%"><input type="text" name="bType" id="bType" size="50" ></td>
+              <td width="57%"><input type="text" name="bType" id="bi_bType" size="50" ></td>
             </tr>
             <tr>
               <td width="43%" class="right">Construction Type:</td>
-              <td width="57%"><input type="text" name="cType" id="cType" size="50" ></td>
+              <td width="57%"><input type="text" name="cType" id="bi_cType" size="50" ></td>
             </tr>
-        </div>
-           <div id="bi_plist">
+
+           <div id="bi_projlist">
             <tr>
               <td width="43%" class="right">Project List:</td>
             </tr>
@@ -185,18 +176,17 @@
             </tr>
 
             <tr>
-              <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
-              <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
-              <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
-              <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
-              <td
-              <input type="text" ng-model="input">
+              <td width="57%"><input type="text" name="cType" id="bi_id" size="20" ></td>
+              <td width="57%"><input type="text" name="cType" id="bi_status" size="20" ></td>
+              <td width="57%"><input type="text" name="cType" id="bi_startDate" size="20" ></td>
+              <td width="57%"><input type="text" name="cType" id="bi_endDate" size="20" ></td>
+              <td ng-model="input">
               <button type="button" ng-click="add()">View</button>
               <button type="submit" ng-click="add()">Add</button>
-              <li ng-repeat="item in items">
-                <button ng-click="remove($index)">Remove</button>
+              <li ng-repeat="item in items"><button ng-click="remove($index)">Remove</button>
               </li>
               </td>
+
             </tr>
             </table>
            </div>
@@ -217,14 +207,8 @@
 
       </div><!--end main_content-->
     </div>
-    <div id="sidebar">
 
 
-    </div><!--end sidebar-->
-
-    <div class="clear"></div>
-
-    <div id="footer"></div><!--end footer-->
   </div>
   <!--Building Information-->
 
@@ -232,7 +216,6 @@
   <!--Project Information-->
   <div id="Project Information" class="tabcontent">
     <h3><center>Project Information</center></h3>
-
     <div id="pi_content">
       <div id="pi_main_content" align="center">
         <form>
@@ -261,7 +244,7 @@
               <td width="43%" class="right">Work List:</td>
               <td Width="57%"><input type="text" name="workList" id="workList" size="50" ></td>
             </tr>
-            <div id="bi_plist">
+            <form id="bi_plist">
               <tr>
                 <td width="43%" class="right">Project List:</td>
               </tr>
@@ -277,8 +260,7 @@
                   <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
                   <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
                   <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
-                  <td
-                  <input type="text" ng-model="input">
+                  <td ng-model="input">
                   <button type="button" ng-click="add()">View</button>
                   <button type="submit" ng-click="add()">Add</button>
                   <li ng-repeat="item in items">
@@ -287,35 +269,23 @@
                   </td>
                 </tr>
               </table>
-
             <table id="p_com">
               <tr>
                 <td class="comments">Comments:</td>
-
               </tr>
               <tr>
                 <td>
-                  <textarea name="message" id="message" cols="50" rows="6"></textarea>
+                  <textarea name="message" id="pi_message" cols="50" rows="6"></textarea>
                 </td>
               </tr>
-              <tr>
-                <td colspan="2" class="center"><input <type"submit" value="Send Now"></td>
-              </tr>
             </table>
-
-        </form>
-      </div>
-
+            </form>
+          </table>
+          </div>
       </div><!--end main_content-->
-      <div id="sidebar">
 
-
-      </div><!--end sidebar-->
-
-      <div class="clear"></div>
-    </div><!--end content-->
-    <div id="footer"></div><!--end footer-->
   </div><!--end-->
+  </div>
   <!--Project Information-->
 
 
@@ -333,11 +303,11 @@
             </tr>
             <tr>
               <td width="43%" class="wStartDate">Start Date:</td>
-              <td Width="57%"><input type="wStartDate" name="wStartDate" id="pId" size="50" ></td>
+              <td Width="57%"><input type="wStartDate" name="wStartDate" id="w_startDate" size="50" ></td>
             </tr>
             <tr>
               <td width="43%" class="wEndDate">End Date:</td>
-              <td Width="57%"><input type="wEndDate" name="wEndDate" id="pId" size="50" ></td>
+              <td Width="57%"><input type="wEndDate" name="wEndDate" id="w_endDate" size="50" ></td>
             </tr>
             <tr>
               <td width="43%" class="contractor">Contractor:</td>
@@ -360,8 +330,7 @@
                 <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
                 <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
                 <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
-                <td
-                <input type="text" ng-model="input">
+                <td ng-model="input">
                 <button type="button" ng-click="add()">View</button>
                 <button type="submit" ng-click="add()">Add</button>
                 <li ng-repeat="item in items">
@@ -370,33 +339,20 @@
                 </td>
               </tr>
             </table>
-            <table id="w_com">
+            <table id="w_comments">
               <tr>
                 <td class="comments">Comments:</td>
-
               </tr>
               <tr>
                 <td>
-                  <textarea name="message" id="message" cols="50" rows="6"></textarea>
+                  <textarea name="message" id="W_message" cols="50" rows="6"></textarea>
                 </td>
-              </tr>
-              <tr>
-                <td colspan="2" class="center"><input <type"submit" value="Send Now"></td>
               </tr>
             </table>
           </table>
         </form>
       </div><!--end main_content-->
-
-      <div id="sidebar">
-
-
-      </div><!--end sidebar-->
-
-      <div class="clear"></div>
     </div><!--end content-->
-    <div id="footer"></div><!--end footer-->
-    <div class="clear"></div>
   </div>
   <!--Work-->
 
@@ -437,18 +393,15 @@
             </tr>
               <tr>
                 <td class="comments">Comments:</td>
-
               </tr>
-
               <tr>
                 <td>
                   <textarea name="message" id="message" cols="50" rows="6"></textarea>
                 </td>
               </tr>
               <tr>
-                <td colspan="2" class="center"><input <type"submit" value="Send Now"></td>
-                <td
-                <input type="text" ng-model="input">
+                <td colspan="2" class="center"></td>
+                <td ng-model="input">
                 <button type="button" ng-click="add()">View</button>
                 <button type="submit" ng-click="add()">Add</button>
                 <li ng-repeat="item in items">
@@ -459,25 +412,14 @@
             </table>
           </table>
         </form>
-
       </div><!--end main_content-->
-
-      <div id="sidebar">
-
-
-
-      </div><!--end sidebar-->
-
-      <div class="clear"></div>
     </div><!--end content-->
     <div id="footer"></div><!--end footer-->
   </div>
 </div>
 <!--Issue-->
 
-
 </body>
 <!--Body end-->
-
 
 </html>

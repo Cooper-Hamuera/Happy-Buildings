@@ -19,8 +19,8 @@ function openTab(evt, cityName) {
 
 //[Angular] Controller index
 app.controller('MainCtrl', function($scope, $http) {
-    $scope.loginVisible = true;         //login visibility (Show/Hide)
-    $scope.indexVisible = false;        //index visibility (Show/Hide)
+    $scope.loginVisible = false;         //login visibility (Show/Hide)
+    $scope.indexVisible = true;        //index visibility (Show/Hide)
     $scope.feedback = "";               //Stores feedback String
     $scope.username = "";               //Username field
     $scope.password = "";               //Password field
