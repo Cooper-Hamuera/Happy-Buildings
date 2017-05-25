@@ -1,41 +1,203 @@
-body{
-    background: url("https://s-media-cache-ak0.pinimg.com/originals/f7/ab/d7/f7abd7a179f7c702c0d25f59a4d99250.jpg") no-repeat center center fixed;
-    background-size:100% 100%;
+body {
+    background: url("https://raw.githubusercontent.com/Cooper-Hamuera/Happy-Buildings/master/city.jpg") no-repeat center center fixed;
+    background-size: 100% 100%;
 }
+
+
 #login{
     position: absolute;
     top:35%;
     left:50%;
     transform:translate(-50%,-50%);
 }
+
+/* Login Header (Happy Buildings)*/
 #login h2{
     text-align: center;
-    color: Sienna;
-    font-family: font-family: "Lato", sans-serif, bold;
-    font-size: 70px;
+    color: dodgerblue;
+    font-family: "Lato", sans-serif, bold;
+    font-size: 80px;
 }
+
+/* Login window*/
+#loginw{
+    border-radius: 5px;
+    background: rgba(100, 154, 254, 0.5);
+    padding: 20px;
+    width: 50%;
+    margin: auto;
+    /*centers div*/
+}
+
+/* Login window input types*/
 #login input{
     display: block;
-    width: 320px;
-    height: 40px;
-    padding: 10px;
+    width: 90%;
+    height: 80%;
     fontsize: 28px;
-    font-family:sans-serif;
+    font-family:"Lato", sans-serif, bold;
     color: DarkGray;
-    backgroung: rgba(0,0,0,5);
     outline: none;
-    border:1px solid rgba(0,0,0,0.3);
-    border-radius: 5px:
-    box-shadow: inset 0px -5px 45px rgba(100,100,100,0.2), 0px 1px 1px rgba(255,255,255,0.2);
-    margin-bottom: 10px;
+    border:1px solid rgba(0,0,0,0.30);
+    border-radius: 5px;
+    box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+    margin: 2% 5%;
+    padding: 10px 1px;
 }
-#login #login-btn{
-    background: #55acee;
-    font-size: 18px;
-    text-align: center;
-    vertical-align: middle;
-    line-height: 20x;
-}
-login body{
 
+body {
+    font-family: "Lato", sans-serif, bold;
+    font-size: 30px;
+    color:#cc644a;
+}
+
+div.header {
+    width: 100%
+    height: 20%
+    border: 1px solid #0B3c5d;
+    background-color: #4484c3;
+}
+
+/* Style the Navigation tab */
+div.tab {
+    overflow: hidden;
+    border: 1px solid #0B3c5d;
+    background-color: #4484c3;
+}
+
+/* Style the buttons inside the tab */
+div.tab button {
+    background-color: inherit;
+    float: left;
+    border: 2px;
+    outline: 2px;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+    height: 10%;
+}
+
+/* Change background color of buttons on hover */
+div.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+div.tab button.active {
+    background-color: #d9d9d9;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #312c2f;
+    border-top: none;
+    color: #996633;
+    height: 700px;
+    font-family:"Lato", sans-serif, bold;
+    color: #130d06;
+}
+div.Building Directory{
+    min-height: 70%;
+}
+
+/* Styles the information of Building Directory form*/
+#bd_main_content{
+    border-radius: 5px;
+    background: rgba(100, 154, 254, 0.3);
+    padding: 20px;
+    width: 90%;
+    margin: 20px 40px;
+    fontsize: 20px;
+    font-family:"Lato", sans-serif, bold;
+}
+table#bdInfo{
+    table-layout:fixed;
+    border-radius: 5px;
+    background: rgba(200, 154, 254, 0.3);
+    padding: 40px;
+    width: 100%;
+    height: 80%;
+    margin: auto;
+    fontsize: 28px;
+    font-family:"Lato", sans-serif, bold;
+}
+
+/* Styles the information of Building Information form*/
+#bi_main_content{
+    border-radius: 5px;
+    background: rgba(100, 154, 254, 0.3);
+    padding: 40px;
+    width: 90%;
+    margin: auto;
+    fontsize: 28px;
+    font-family:"Lato", sans-serif, bold;
+}
+
+
+
+table#pList{
+    table-layout:fixed;
+    border-radius: 5px;
+    background: rgba(200, 154, 254, 0.3);
+    padding: 40px;
+    width: 100%;
+    height: 80%;
+    margin: auto;
+    fontsize: 28px;
+    font-family:"Lato", sans-serif, bold;
+}
+/* Styles the information of Project Information form*/
+#pi_main_content{
+    border-radius: 5px;
+    background: rgba(100, 154, 254, 0.3);
+    padding: 20px;
+    width: 90%;
+    margin: auto;
+    fontsize: 28px;
+    font-family:"Lato", sans-serif, bold;
+}
+table#wList {
+    table-layout: fixed;
+    border-radius: 5px;
+    background: rgba(200, 154, 254, 0.3);
+    padding: 40px;
+    width: 100%;
+    height: 80%;
+    margin: auto;
+    fontsize: 28px;
+    font-family: "Lato", sans-serif, bold;
+}
+/* Styles the information of Work form*/
+#w_main_content{
+    border-radius: 5px;
+    background: rgba(100, 154, 254, 0.3);
+    padding: 20px;
+    width: 90%;
+    margin: auto;
+    fontsize: 28px;
+    font-family:"Lato", sans-serif, bold;
+}
+table#iList {
+    table-layout: fixed;
+    border-radius: 5px;
+    background: rgba(200, 154, 254, 0.3);
+    padding: 40px;
+    width: 100%;
+    height: 80%;
+    margin: auto;
+    fontsize: 28px;
+    font-family: "Lato", sans-serif, bold;
+}
+/* Styles the information of Issue form*/
+#i_main_content{
+    border-radius: 5px;
+    background: rgba(100, 154, 254, 0.3);
+    padding: 20px;
+    width: 90%;
+    margin: auto;
+    fontsize: 28px;
+    font-family:"Lato", sans-serif, bold;
 }

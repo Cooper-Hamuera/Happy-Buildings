@@ -37,8 +37,11 @@ app.controller('MainCtrl', function($scope, $http) {
     //JSON file check and stores info for each file
     $scope.loginData = null;
     $scope.loginLocation = 'user_list.json';
-    $scope.buildingData= null;
-    $scope.buildingLocation = 'building_dir.json';
+
+    $scope.buildingdirData= null;
+    $scope.buildingdirLocation = 'building_dir.json';
+    $scope.buildinginfData= null;
+    $scope.buildinginfLocation = null;
     $scope.project= null;
     $scope.projectLocation = 'project.json';
     $scope.work= null;
@@ -69,6 +72,7 @@ app.controller('MainCtrl', function($scope, $http) {
 
        **/
 
+    /**check login JSON*/
     $scope.get = $http.get($scope.loginLocation)                                //Fetch the JSON file from the location in the variable
         .then(
             function successCall(response) {
@@ -111,13 +115,23 @@ app.controller('MainCtrl', function($scope, $http) {
         }
     };
 
-
     //cancel button clears the username and password fields
     $scope.cancelLogin=function(){
         $scope.username="";
         $scope.password="";
         $scope.feedback="";
     };
+
+    /**check Building Directory JSON*/
+    $scope.get = $http.get($scope.buildingdirLocation)                                //Fetch the JSON file from the location in the variable
+        .then(
+            function successCall(response) {
+                $scope.buildingdirData = [response.data.buildingdirData];                         //Saves json response into this variable
+            }, function errorCall(response) {
+                $scope.feedback = "Error reading file: " + response.status;        // displays feedback error if JSON form incorrect
+                $scope.buildingdirData = null;                                        // incorrect JSON form will keep it set at null
+            }
+        );
 
 });
 //[Angular] Controller End

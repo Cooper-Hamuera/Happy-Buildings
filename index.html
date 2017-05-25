@@ -7,9 +7,15 @@
   <script>document.write('<base href="' + document.location + '" />');</script>
   <link rel="stylesheet" href="style.css">
   <script data-require="angular.js@1.4.x" src="https://code.angularjs.org/1.4.12/angular.js" data-semver="1.4.9"></script>
+  <script data-require="angular.js@1.6.x" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular-animate.js" data-semver="1.6.0"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Aclonica" />
   <script src="app.js"></script>
   <script src="user_list.json"></script>
+  <script src="building_dir.json"></script>
 </head>
 <!--source list-->
 
@@ -64,18 +70,66 @@
     <div id="bd_content">
       <div id="bd_main_content" align="center">
         <form>
-          <table id="bdInfo" align="center">
+          <table class="table table-striped table-bordered">
+            <thead>
+            <tr><th>Building ID</th><th>Owner</th><th>Address</th><th>Type</th><th>Construction Date</th></tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="buildings in buildingdirData track by $index">
+              <td>{{buildings.ID}}</td>
+              <td>{{buildings.Owner}}</td>
+              <td>{{buildings.Address}}</td>
+              <td>{{buildings.BuildingType}}</td>
+              <td>{{buildings.ConstructionDate}}</td>
+              <td><div class="btn-group">
+                <button type="button" class="btn btn-default btn" ng-click="edit($index);"><i class="glyphicon glyphicon-pencil"></i></button>
+                <button type="button" class="btn btn-default btn" ng-click="delete();"><i class="glyphicon glyphicon-trash"></i></button>
+              </div></td>
+            </tr>
+            </tbody>
+          </table>
+
+          <form class="form-horizontal">
+            <div class="form-group row" align="center">
+              <div class="col-sm-2">
+                <input type="text" class="form-control" id="b_Id" placeholder="Building ID" ng-model="buildings.ID"/>
+              </div>
+              <div class="col-sm-2">
+                <input type="text" class="form-control" id="b_Owner" placeholder="Building Owner" ng-model="buildings.Owner"/>
+              </div>
+              <div class="col-sm-2">
+                <input type="test" class="form-control" id="b_Address" placeholder="Building Address" ng-model="buildings.Address"/>
+              </div>
+              <div class="col-sm-2">
+                <input type="test" class="form-control" id="b_Type" placeholder="Building Type" ng-model="buildings.Type"/>
+              </div>
+              <div class="col-sm-2">
+                <input type="test" class="form-control" id="b_ConstructionDate" placeholder="Construction Date" ng-model="buildings.ConstructionDate"/>
+              </div>
+              <input type="hidden" ng-model="$scope.objectIndex" class="ng-valid">
+              <div class="btn-group col-sm-2">
+                <button type="button" class="btn btn-primary btn" ng-click="Add()"><i class="glyphicon glyphicon glyphicon-ok-circle"></i>Add</button>
+              </div>
+            </div>
+
+
+          </form>
+
+         <!--<table id="bdInfo" align="center">
+
             <tr>
               <td class="right">Building ID:</td>
-              <td class="right">Building Name:</td>
-              <td class="right">Building Address:</td>
-              <td class="right">Building Owner:</td>
+              <td class="right">Owner:</td>
+              <td class="right">Address:</td>
+              <td class="right">Type:</td>
+              <td class="right">Construction Date:</td>
 
             </tr>
-            <td Width="57%"><input type="text" name="bId" id="b_Id" size="25" autofocus="autofocus" required="required"></td>
-            <td Width="57%"><input type="text" name="building name" id="b_Name" size="25" required="required"></td>
-            <td Width="57%"><input type="text" name="bAddress" id="b_Ad" size="25" required="required"></td>
-            <td Width="57%"><input type="text" name="bOwner" id="b_Owner" size="25" required="required"></td>
+            <td Width="57%"><input type="text" name="bId" id="b_Id" size="15" autofocus="autofocus" required="required"></td>
+            <td Width="57%"><input type="text" name="building owner" id="b_Owner" size="15" required="required"></td>
+            <td Width="57%"><input type="text" name="bAddress" id="b_Ad" size="15" required="required"></td>
+            <td Width="57%"><input type="text" name="bType" id="b_Type" size="15" required="required"></td>
+            <td Width="57%"><input type="text" name="bCdate" id="b_Cd" size="15" required="required"></td>
             <td ng-model="input">
 
               <button type="button" ng-click="add()">View</button>
@@ -86,20 +140,7 @@
               </li>
             </td>
             </tr>
-
-<!--            <tr>
-
-              <td>
-                <select name+"found" id="foundyou">
-                <option value="">Select One</option>
-                <option value="address 1">Address 1</option>
-                <option value="address 3">Address 2</option>
-                <option value="address 3">Address 3</option>
-                </select>
-              </td>
-            </tr>  -->
-
-            </table>
+            </table>-->
             <table id="bd_com">
               <tr>
                 <td class="comments">Comments:</td>
