@@ -97,12 +97,16 @@ app.controller('MainCtrl', function($scope, $http) {
             }
             if ($scope.loginData[i].UserType == "admin"){                               //if in the element check the user type is admin, set to true
                 $scope.user_admin = true;
+                $scope.adminView = true;
             }else if($scope.loginData[i].UserType == "manager"){                        //if in the element check the user type is manager, set to true
                 $scope.user_manager = true;
+                $scope.adminView = false;
             }else if($scope.loginData[i].UserType == "owner"){                          //if in the element check the user type is owner, set to true
                 $scope.user_owner = true;
+                $scope.adminView = false;
             }else if($scope.loginData[i].UserType == "contractor"){                     //if in the element check the user type is contractor, set to true
                 $scope.user_contractor = true;
+                $scope.adminView = false;
             }
         }
 
@@ -135,7 +139,6 @@ app.controller('MainCtrl', function($scope, $http) {
         );
     //if ($scope.usernameValid && $scope.passwordValid) {                     //if both the username and password are contained in the server
 
-      //  $scope.adminView = false;                                        //Hide Add & Delete Buttons
-        $scope.adminView = true;
+
     });
 //[Angular] Controller End
