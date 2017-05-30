@@ -82,8 +82,9 @@
               <td>{{buildings.BuildingType}}</td>
               <td>{{buildings.ConstructionDate}}</td>
               <td><div class="btn-group">
-                <button type="button" class="btn btn-default btn" ng-click="edit($index);"><i class="glyphicon glyphicon-pencil"></i></button>
-                <button type="button" class="btn btn-default btn" ng-click="delete();"><i class="glyphicon glyphicon-trash"></i></button>
+                <button type="button" class="btn btn-default btn" ng-click="view();"><i class="glyphicon glyphicon-list-alt"></i></button>
+                <button type="button" class="btn btn-default btn" ng-show="adminView" ng-click="edit($index);"><i class="glyphicon glyphicon-pencil"></i></button>
+                <button type="button" class="btn btn-default btn" ng-show="adminView" ng-click="delete();"><i class="glyphicon glyphicon-trash"></i></button>
               </div></td>
             </tr>
             </tbody>

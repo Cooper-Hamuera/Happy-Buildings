@@ -20,6 +20,7 @@ function openTab(evt, cityName) {
 //[Angular] Controller index
 app.controller('MainCtrl', function($scope, $http) {
     $scope.loginVisible = true;         //login visibility (Show/Hide)
+    $scope.adminView = false;         //login visibility (Show/Hide)
     $scope.indexVisible = false;        //index visibility (Show/Hide)
     $scope.feedback = "";               //Stores feedback String
     $scope.username = "";               //Username field
@@ -132,6 +133,9 @@ app.controller('MainCtrl', function($scope, $http) {
                 $scope.buildingdirData = null;                                        // incorrect JSON form will keep it set at null
             }
         );
+    //if ($scope.usernameValid && $scope.passwordValid) {                     //if both the username and password are contained in the server
 
-});
+      //  $scope.adminView = false;                                        //Hide Add & Delete Buttons
+        $scope.adminView = true;
+    });
 //[Angular] Controller End
