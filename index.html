@@ -36,7 +36,7 @@
     <!-- <div ng-bind="password"></div>-->
     <input type="submit" class="submit button" value="Login" ng-click="checkLogin()">
     <input type="submit" class="submit button" value="Cancel" ng-click="cancelLogin()">
-    <p id="feedback" ng-bind="feedback"></p> <!--[Angular] Feedback-->
+    <div id="feedback" ng-bind="feedback"></div> <!--[Angular] Feedback-->
     </div>
   </form>
 
@@ -75,7 +75,7 @@
             <tr><th>Building ID</th><th>Owner</th><th>Address</th><th>Type</th><th>Construction Date</th></tr>
             </thead>
             <tbody>
-            <tr ng-repeat="buildings in buildingdirData track by $index">
+            <tr ng-repeat="buildings in buildingdirData">
               <td>{{buildings.ID}}</td>
               <td>{{buildings.Owner}}</td>
               <td>{{buildings.Address}}</td>

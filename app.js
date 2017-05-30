@@ -19,8 +19,8 @@ function openTab(evt, cityName) {
 
 //[Angular] Controller index
 app.controller('MainCtrl', function($scope, $http) {
-    $scope.loginVisible = false;         //login visibility (Show/Hide)
-    $scope.indexVisible = true;        //index visibility (Show/Hide)
+    $scope.loginVisible = true;         //login visibility (Show/Hide)
+    $scope.indexVisible = false;        //index visibility (Show/Hide)
     $scope.feedback = "";               //Stores feedback String
     $scope.username = "";               //Username field
     $scope.password = "";               //Password field
@@ -38,7 +38,7 @@ app.controller('MainCtrl', function($scope, $http) {
     $scope.loginData = null;
     $scope.loginLocation = 'user_list.json';
 
-    $scope.buildingdirData= null;
+    $scope.buildingdirData = null;
     $scope.buildingdirLocation = 'building_dir.json';
     $scope.buildinginfData= null;
     $scope.buildinginfLocation = null;
@@ -126,7 +126,7 @@ app.controller('MainCtrl', function($scope, $http) {
     $scope.get = $http.get($scope.buildingdirLocation)                                //Fetch the JSON file from the location in the variable
         .then(
             function successCall(response) {
-                $scope.buildingdirData = [response.data.buildingdirData];                         //Saves json response into this variable
+                $scope.buildingdirData = response.data.buildings;                         //Saves json response into this variable
             }, function errorCall(response) {
                 $scope.feedback = "Error reading file: " + response.status;        // displays feedback error if JSON form incorrect
                 $scope.buildingdirData = null;                                        // incorrect JSON form will keep it set at null
