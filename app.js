@@ -16,19 +16,32 @@ function openTab(evt, cityName) {
 }
 //Navagation bar tabs
 
+/**
+
+ >>Local JSON file requires HTML header source
+ >>Server URL's list
+
+ $scope.loginLocation = 'https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/user_list.json';
+ $scope.loginLocation = 'https://happybuildings.sim.vuw.ac.nz/api/coopersamu/user_list.json';
+
+ $scope.buildingDir = https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/building_dir.json;
+ $scope.buildingDir = https://happybuildings.sim.vuw.ac.nz/api/coopersamu/building_dir.json;
+
+ $scope.project = https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/project.json;
+ $scope.project = https://happybuildings.sim.vuw.ac.nz/api/coopersamu/project.json;
+
+ **/
 
 //[Angular] Controller index
 app.controller('MainCtrl', function($scope, $http) {
     $scope.loginVisible = true;         //login visibility (Show/Hide)
     $scope.indexVisible = false;        //index visibility (Show/Hide)
-    $scope.adminView = false;           //login visibility (Show/Hide)
+    $scope.adminView = false;           //admin visibility (Show/Hide)
     $scope.feedback = "";               //Stores feedback String
     $scope.username = "";               //Username field
     $scope.password = "";               //Password field
     $scope.usernameValid = false;       //Username validation
     $scope.passwordValid = false;       //Password validation
-
-
 
     //JSON file check and stores info for each file
     $scope.loginData = null;
@@ -38,35 +51,9 @@ app.controller('MainCtrl', function($scope, $http) {
     $scope.buildingdirLocation = 'https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/building_dir.json';
     $scope.project= null;
     $scope.projectLocation = 'project.json';
-    $scope.work= null;
-    $scope.workLocation = 'work.json';
-    $scope.issue= null;
-    $scope.issueLocation = 'issue.json';
 
 
-    /**
-
-     >>Local JSON file requires HTML header source
-     >>Server URL's list
-
-     $scope.loginLocation = 'https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/user_list.json';
-     $scope.loginLocation = 'https://happybuildings.sim.vuw.ac.nz/api/coopersamu/user_list.json';
-
-     $scope.buildingDir = https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/building_dir.json;
-     $scope.buildingDir = https://happybuildings.sim.vuw.ac.nz/api/coopersamu/building_dir.json;
-
-     $scope.project = https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/project.json;
-     $scope.project = https://happybuildings.sim.vuw.ac.nz/api/coopersamu/project.json;
-
-     $scope.work = https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/work.json;
-     $scope.work = https://happybuildings.sim.vuw.ac.nz/api/coopersamu/work.json;
-
-     $scope.issue = https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/issue.json;
-     $scope.issue = https://happybuildings.sim.vuw.ac.nz/api/coopersamu/issue.json;
-
-     **/
-
-    /**check login JSON*/
+    /**check Login JSON*/
     $scope.get = $http.get($scope.loginLocation)                                //Fetch the JSON file from the location in the variable
         .then(
             function successCall(response) {
@@ -77,7 +64,7 @@ app.controller('MainCtrl', function($scope, $http) {
             }
         );
 
-    $scope.checkLogin = function() {
+    $scope.checkLogin = function() {                                                    //check and compare login entry
         if ($scope.loginData === null) {
             $scope.feedback = "Sorry, error reading file";
         }
@@ -109,20 +96,20 @@ app.controller('MainCtrl', function($scope, $http) {
         }
     };
 
-    //cancel button clears the username and password fields
-    $scope.cancelLogin=function(){
+    $scope.cancelLogin=function(){      //cancel button clears the username and password fields
         $scope.username="";
         $scope.password="";
         $scope.feedback="";
     };
 
+
     /**Show Building Directory JSON*/
     $scope.get = $http.get($scope.buildingdirLocation)                                //Fetch the JSON file from the location in the variable
         .then(
             function successCall(response) {
-                $scope.buildingdirData = response.data.buildings;                         //Saves json response into this variable
+                $scope.buildingdirData = response.data.buildings;                     //Saves json response into this variable
             }, function errorCall(response) {
-                $scope.feedback = "Error reading file: " + response.status;        // displays feedback error if JSON form incorrect
+                $scope.feedback = "Error reading file: " + response.status;           // displays feedback error if JSON form incorrect
                 $scope.buildingdirData = null;                                        // incorrect JSON form will keep it set at null
             }
         );
@@ -132,6 +119,7 @@ app.controller('MainCtrl', function($scope, $http) {
     $scope.building_Address = "";
     $scope.building_Type =  "";
     $scope.building_ConstructionDate = "0001-01-01T00:00:00";
+
 
     /**Add to Building Directory*/
     var AddId = $scope.building_ID;
@@ -148,7 +136,7 @@ app.controller('MainCtrl', function($scope, $http) {
         "BuildingType": "Castle",
         "ConstructionDate": "0001-01-01T00:00:00"
     };
-    $scope.Add = function() { //adds element to the building directory JSON
+    $scope.Add = function() {                   //adds element to the building directory JSON
         var AddId = $scope.building_ID;
         var AddOwner = $scope.building_Owner;
         var AddAddress = $scope.building_Address;
@@ -174,7 +162,7 @@ app.controller('MainCtrl', function($scope, $http) {
             }
         );
     }
-    $scope.Update = function() {    //updates the display for the Building Directory
+    $scope.Update = function() {                                                          //updates the display for the Building Directory
         $scope.promise2 = $http.get($scope.buildingdirLocation)
             .then(function successCall(response) {
                     $scope.building_feedback = "Get>> " + JSON.stringify(response.data);
@@ -185,9 +173,9 @@ app.controller('MainCtrl', function($scope, $http) {
         $scope.get = $http.get($scope.buildingdirLocation)                                //Fetch the JSON file from the location in the variable
             .then(
                 function successCall(response) {
-                    $scope.buildingdirData = response.data.buildings;                         //Saves json response into this variable
+                    $scope.buildingdirData = response.data.buildings;                     //Saves json response into this variable
                 }, function errorCall(response) {
-                    $scope.feedback = "Error reading file: " + response.status;        // displays feedback error if JSON form incorrect
+                    $scope.feedback = "Error reading file: " + response.status;           // displays feedback error if JSON form incorrect
                     $scope.buildingdirData = null;                                        // incorrect JSON form will keep it set at null
                 }
             );

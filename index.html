@@ -27,7 +27,6 @@
 
 <!--Login page-->
 <div class="loginPage" id="loginDisplay" ng-show = "loginVisible"> <!--[Angular] Show/Hide DIV-->
-
   <form id="login">
     <h2>Happy Buildings</h2>
     <div id="loginw">
@@ -35,22 +34,20 @@
     <!--<div ng-bind="username"></div>-->
     <input class= "if" type="password" placeholder="Enter Password" id="password" ng-model ="password"/>
     <!-- <div ng-bind="password"></div>-->
-    <input type="submit" class="submit button" value="Login" ng-click="checkLogin()">
-    <input type="submit" class="submit button" value="Cancel" ng-click="cancelLogin()">
+    <input type="submit" class="submit button" value="Login" ng-click="checkLogin()"/>
+    <input type="submit" class="submit button" value="Cancel" ng-click="cancelLogin()"/>
     <div id="feedback" ng-bind="feedback"></div> <!--[Angular] Feedback-->
     </div>
   </form>
-
 </div>
 <!--Login page-->
 
 
 <!--Navagation bar title-->
-<div id="indexDisplay"  ng-show = "indexVisible"> <!--[Angular] Show/Hide DIV-->
+<div id="indexDisplay"  ng-show = "indexVisible"> <!--Nav Bar Start, show/hide-->
   <div class="header">
     <h1><center>HAPPY BUILDINGS</center> </h1>
   </div>
-
   <!--Navagation bar title-->
 
 
@@ -68,8 +65,6 @@
   <!--Building Directory-->
   <div id="Building Directory" class="tabcontent">
     <h3><center>Building Directory</center></h3>
-
-    <div id="bd_content">
       <div id="bd_main_content" align="center">
         <form>
           <table class="table table-striped table-bordered">
@@ -92,9 +87,9 @@
             </tbody>
           </table>
 
+          <!--Add Buildings-->
           <form class="form-horizontal">
             <div class="form-group row" align="center">
-
               <div class="col-sm-2">
                 <INPUT type="text" class="form-control" id="b_Id" placeholder="Building ID" ng-model="building_ID"/>
 
@@ -109,19 +104,15 @@
                 <button type="submit" value="post" ng-click="Add()"><i class="glyphicon glyphicon-ok-circle"></i>Add</button>
                 <button type="submit" value="get" ng-click="Update()"><i class="glyphicon glyphicon-cloud"></i>Update</button>
               </div>
-
               <br><br>
               {{building_feedback}}
-
             </div>
-
-
           </form>
+          <!--Add Buildings-->
 
-            <table id="bd_com">
+          <table id="bd_com">
               <tr>
                 <td class="comments">Comments:</td>
-
               </tr>
               <tr>
                 <td>
@@ -130,12 +121,8 @@
               </tr>
             </table>
           </form>
-
         </div><!--end main_content-->
-
-    </div><!--end content-->
-
-  </div>
+    </div>
   <!--Building Directory-->
 
 
@@ -143,7 +130,6 @@
   <div id="Building Information" class="tabcontent">
     <h3><center>Building Information</center></h3>
 
-    <div id="bi_content">
       <div id="bi_main_content" align="center">
         <div id="bi_info">
         <form>
@@ -212,11 +198,9 @@
           </table>
         </form>
 
-      </div><!--end main_content-->
-    </div>
+      </div>
 
-
-  </div>
+  </div><!--end main_content-->
   </div>
   <!--Building Information-->
 
@@ -224,7 +208,6 @@
   <!--Project Information-->
   <div id="Project Information" class="tabcontent">
     <h3><center>Project Information</center></h3>
-    <div id="pi_content">
       <div id="pi_main_content" align="center">
         <form>
           <table align="center">
@@ -289,9 +272,8 @@
             </table>
             </form>
           </table>
-          </div>
-      </div><!--end main_content-->
-
+        </form>
+      </div> <!--end main_content-->
   </div><!--end-->
   <!--Project Information-->
 
@@ -299,8 +281,6 @@
   <!--Work-->
   <div id="Work" class="tabcontent">
     <h3><center>Work</center></h3>
-
-    <div id="w_content">
       <div id="w_main_content" align="center">
         <form>
           <table align="center">
@@ -359,7 +339,6 @@
           </table>
         </form>
       </div><!--end main_content-->
-    </div><!--end content-->
   </div>
   <!--Work-->
 
@@ -367,8 +346,6 @@
   <!--Issue-->
   <div id="Issue" class="tabcontent">
     <h3><center>Issue</center></h3>
-
-    <div id="i_content">
       <div id="i_main_content" align="center">
         <form id="simple form">
           <table align="center">
@@ -420,10 +397,10 @@
           </table>
         </form>
       </div><!--end main_content-->
-    </div><!--end content-->
-    <div id="footer"></div><!--end footer-->
   </div>
 <!--Issue-->
+
+</div><!--Nav Bar end-->
 
 </body>
 <!--Body end-->
