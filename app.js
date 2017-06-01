@@ -181,5 +181,8 @@ app.controller('MainCtrl', function($scope, $http) {
             );
     }
 
+    $scope.view = function(index) {
+        $scope.details = $scope.buildingdirData[index];
+    }
 });
 //[Angular] Controller End
