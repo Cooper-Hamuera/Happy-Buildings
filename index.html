@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="style.css">
   <script data-require="angular.js@1.4.x" src="https://code.angularjs.org/1.4.12/angular.js" data-semver="1.4.9"></script>
   <script data-require="angular.js@1.6.x" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular-animate.js" data-semver="1.6.0"></script>
+  <script data-require="angular.js@*" data-semver="1.6.0" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
@@ -92,56 +93,30 @@
 
           <form class="form-horizontal">
             <div class="form-group row" align="center">
+
               <div class="col-sm-2">
-                <input type="text" class="form-control" id="b_Id" placeholder="Building ID" ng-model="buildings.ID"/>
+                <INPUT type="text" class="form-control" id="b_Id" placeholder="Building ID" ng-model="building_ID"/>
+
+                <INPUT type="text" class="form-control" id="b_Owner" placeholder="Building Owner" ng-model="building_Owner"/>
+
+                <INPUT type="text" class="form-control" id="b_Address" placeholder="Building Address" ng-model="building_Address"/>
+
+                <INPUT type="text" class="form-control" id="b_Type" placeholder="Building Type" ng-model="building_Type"/>
+
+                <INPUT type="text" class="form-control" id="b_ConstructionDate" placeholder="Construction Date" ng-model="building_ConstructionDate"/>
+
+                <button type="submit" value="post" ng-click="Add()"><i class="glyphicon glyphicon-ok-circle"></i>Add</button>
+                <button type="submit" value="get" ng-click="Update()"><i class="glyphicon glyphicon-cloud"></i>Update</button>
               </div>
-              <div class="col-sm-2">
-                <input type="text" class="form-control" id="b_Owner" placeholder="Building Owner" ng-model="buildings.Owner"/>
-              </div>
-              <div class="col-sm-2">
-                <input type="test" class="form-control" id="b_Address" placeholder="Building Address" ng-model="buildings.Address"/>
-              </div>
-              <div class="col-sm-2">
-                <input type="test" class="form-control" id="b_Type" placeholder="Building Type" ng-model="buildings.Type"/>
-              </div>
-              <div class="col-sm-2">
-                <input type="test" class="form-control" id="b_ConstructionDate" placeholder="Construction Date" ng-model="buildings.ConstructionDate"/>
-              </div>
-              <input type="hidden" ng-model="$scope.objectIndex" class="ng-valid">
-              <div class="btn-group col-sm-2">
-                <button type="button" class="btn btn-primary btn" ng-click="Add()"><i class="glyphicon glyphicon glyphicon-ok-circle"></i>Add</button>
-              </div>
+
+              <br><br>
+              {{building_feedback}}
+
             </div>
 
 
           </form>
 
-         <!--<table id="bdInfo" align="center">
-
-            <tr>
-              <td class="right">Building ID:</td>
-              <td class="right">Owner:</td>
-              <td class="right">Address:</td>
-              <td class="right">Type:</td>
-              <td class="right">Construction Date:</td>
-
-            </tr>
-            <td Width="57%"><input type="text" name="bId" id="b_Id" size="15" autofocus="autofocus" required="required"></td>
-            <td Width="57%"><input type="text" name="building owner" id="b_Owner" size="15" required="required"></td>
-            <td Width="57%"><input type="text" name="bAddress" id="b_Ad" size="15" required="required"></td>
-            <td Width="57%"><input type="text" name="bType" id="b_Type" size="15" required="required"></td>
-            <td Width="57%"><input type="text" name="bCdate" id="b_Cd" size="15" required="required"></td>
-            <td ng-model="input">
-
-              <button type="button" ng-click="add()">View</button>
-              <button type="submit" ng-click="add()">+</button>
-              <button type="submit" ng-click="add()">-</button>
-              <li ng-repeat="item in items">
-                <button ng-click="remove($index)">Remove</button>
-              </li>
-            </td>
-            </tr>
-            </table>-->
             <table id="bd_com">
               <tr>
                 <td class="comments">Comments:</td>

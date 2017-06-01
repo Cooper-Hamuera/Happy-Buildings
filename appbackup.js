@@ -19,26 +19,25 @@ function openTab(evt, cityName) {
 
 //[Angular] Controller index
 app.controller('MainCtrl', function($scope, $http) {
-    $scope.loginVisible = false;         //login visibility (Show/Hide)
-    $scope.indexVisible = true;        //index visibility (Show/Hide)
+    $scope.loginVisible = true;         //login visibility (Show/Hide)
+    $scope.adminView = false;         //login visibility (Show/Hide)
+    $scope.indexVisible = false;        //index visibility (Show/Hide)
     $scope.feedback = "";               //Stores feedback String
     $scope.username = "";               //Username field
     $scope.password = "";               //Password field
     $scope.usernameValid = false;       //Username validation
     $scope.passwordValid = false;       //Password validation
 
-    //user access type
-    $scope.user_admin = false;
-    $scope.user_manager = false;
-    $scope.user_owner = false;
-    $scope.user_contractor = false;
 
 
     //JSON file check and stores info for each file
     $scope.loginData = null;
     $scope.loginLocation = 'user_list.json';
-    $scope.buildingData= null;
-    $scope.buildingLocation = 'building_dir.json';
+
+    $scope.buildingdirData = null;
+    $scope.buildingdirLocation = 'https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/building_dir.json';
+    $scope.buildinginfData= null;
+    $scope.buildinginfLocation = null;
     $scope.project= null;
     $scope.projectLocation = 'project.json';
     $scope.work= null;
@@ -69,6 +68,7 @@ app.controller('MainCtrl', function($scope, $http) {
 
      **/
 
+    /**check login JSON*/
     $scope.get = $http.get($scope.loginLocation)                                //Fetch the JSON file from the location in the variable
         .then(
             function successCall(response) {
@@ -91,13 +91,13 @@ app.controller('MainCtrl', function($scope, $http) {
                 $scope.passwordValid = true;                                            //then the password is valid
             }
             if ($scope.loginData[i].UserType == "admin"){                               //if in the element check the user type is admin, set to true
-                $scope.user_admin = true;
+                $scope.adminView = true;
             }else if($scope.loginData[i].UserType == "manager"){                        //if in the element check the user type is manager, set to true
-                $scope.user_manager = true;
+                $scope.adminView = false;
             }else if($scope.loginData[i].UserType == "owner"){                          //if in the element check the user type is owner, set to true
-                $scope.user_owner = true;
+                $scope.adminView = false;
             }else if($scope.loginData[i].UserType == "contractor"){                     //if in the element check the user type is contractor, set to true
-                $scope.user_contractor = true;
+                $scope.adminView = false;
             }
         }
 
@@ -111,7 +111,6 @@ app.controller('MainCtrl', function($scope, $http) {
         }
     };
 
-
     //cancel button clears the username and password fields
     $scope.cancelLogin=function(){
         $scope.username="";
@@ -119,5 +118,95 @@ app.controller('MainCtrl', function($scope, $http) {
         $scope.feedback="";
     };
 
+    /**check Building Directory JSON*/
+    $scope.get = $http.get($scope.buildingdirLocation)                                //Fetch the JSON file from the location in the variable
+        .then(
+            function successCall(response) {
+                $scope.buildingdirData = response.data.buildings;                         //Saves json response into this variable
+            }, function errorCall(response) {
+                $scope.feedback = "Error reading file: " + response.status;        // displays feedback error if JSON form incorrect
+                $scope.buildingdirData = null;                                        // incorrect JSON form will keep it set at null
+            }
+        );
+
+    $scope.building_ID = "";
+    $scope.building_Owner = "";
+    $scope.building_Address = "";
+    $scope.building_Type =  "";
+    $scope.building_ConstructionDate = "0001-01-01T00:00:00";
+
+    var Id = $scope.building_ID;
+    var Owner = $scope.building_Owner;
+    var Address = $scope.building_Address;
+    var BuildingType = $scope.building_Type;
+    var ConstructionDate = $scope.building_ConstructionDate;
+    var read = $scope.buildingdirLocation;
+    var write = 'https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/update.building.json';
+
+    var sourceObj = {
+        "ID": Id,
+        "Owner": Owner,
+        "Address": Address,
+        "BuildingType": BuildingType,
+        "ConstructionDate": ConstructionDate
+    };
+
+    $scope.add = function() {
+        var Id = $scope.building_ID;
+        var Owner = $scope.building_Owner;
+        var Address = $scope.building_Address;
+        var BuildingType = $scope.building_Type;
+        var ConstructionDate = $scope.building_ConstructionDate;
+        var sourceObj = {
+            "ID": Id,
+            "Owner": Owner,
+            "Address": Address,
+            "BuildingType": BuildingType,
+            "ConstructionDate": ConstructionDate
+        }
+        $scope.$promise1 = $http
+        ({
+            method: "POST",
+            url: write,
+            data: sourceObj,
+            headers: {'Content-Type': 'application/json'}
+        }).then(function successCall(response) {
+                $scope.building_feedback = "Post>> " + JSON.stringify(sourceObj);
+            }, function errorCall(response) {
+                $scope.building_feedback = "Error posting:" + " Status: "+ response.status + " Writing: " + JSON.stringify(sourceObj);
+            }
+        );
+    }
+    $scope.update = function() {
+        $scope.promise2 = $http.get(read)
+            .then(function successCall(response) {
+                    $scope.building_feedback = "Get>> " + JSON.stringify(response.data);
+                }, function errorCall(response) {
+                    $scope.building_feedback = "Error getting: " + response.status;
+                }
+            );
+    }
+
+    /**$scope.edit = function(id) {
+        //search user and update it
+        $scope.buildingObject = id;
+        $scope.buildingEntry = angular.copy($scope.buildingdirData[id]);
+        console.log($scope.buildingObject);
+    }
+     $scope.add = function() {
+        console.log($scope.buildingObject);
+        if($scope.buildingdirData[$scope.buildingObject] == null) {
+            //this is new record
+            $scope.buildingdirData.push($scope.buildingEntry);
+        } else {
+            //for existing record
+            //and update it.
+            $scope.buildingdirData[$scope.buildingObject] = $scope.buildingEntry;
+        }
+
+        //clear the add record form
+        $scope.buildingEntry = {};
+        $scope.buildingObject = '';
+    }*/
 });
 //[Angular] Controller End
