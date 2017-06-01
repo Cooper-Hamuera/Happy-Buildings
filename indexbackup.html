@@ -79,7 +79,8 @@
                         <td>{{buildings.BuildingType}}</td>
                         <td>{{buildings.ConstructionDate}}</td>
                         <td><div class="btn-group">
-                            <button type="button" class="btn btn-default btn" ng-click="view();"><i class="glyphicon glyphicon-list-alt"></i></button>
+                            <button type="submit" class="btn btn-default btn" ng-click="viewBuildingDetails($index)" onclick="openTab(event, 'Building Information')"><i class="glyphicon glyphicon-list-alt"></i>View</button>
+
                             <button type="button" class="btn btn-default btn" ng-show="adminView" ng-click="edit($index);"><i class="glyphicon glyphicon-pencil"></i></button>
                             <button type="button" class="btn btn-default btn" ng-show="adminView" ng-click="delete();"><i class="glyphicon glyphicon-trash"></i></button>
                         </div></td>
@@ -136,35 +137,23 @@
                     <table align="center">
                         <tr>
                             <td width="43%" class="right">Building ID:</td>
-                            <td width="57%" ><input type="text" name="bId" id="bi_bId" size="50" autofocus="autofocus" required="required"></td>
-                        </tr>
-                        <tr>
-                            <td width="43%" class="right">Building Name:</td>
-                            <td width="57%"><input type="text" name="bName" id="bi_bName" size="50" ></td>
-                        </tr>
-                        <tr>
-                            <td class="right">Building Address</td>
-
-                            <td>
-                                <select name="found" id="foundyou">
-                                    <option value="">Select One</option>
-                                    <option value="address 1">Address 1</option>
-                                    <option value="address 3">Address 2</option>
-                                    <option value="address 3">Address 3</option>
-                                </select>
-                            </td>
+                            <td>{{CurrentID}}</td>
                         </tr>
                         <tr>
                             <td width="43%" class="right">Building Owner:</td>
-                            <td width="57%"><input type="text" name="bOwn" id="bi_bOwn" size="50" ></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td width="43%" class="right">Building Address</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td width="43%" class="right">Building Type:</td>
-                            <td width="57%"><input type="text" name="bType" id="bi_bType" size="50" ></td>
+                            <td></td>
                         </tr>
                         <tr>
-                            <td width="43%" class="right">Construction Type:</td>
-                            <td width="57%"><input type="text" name="cType" id="bi_cType" size="50" ></td>
+                            <td width="43%" class="right">Construction Date:</td>
+                            <td></td>
                         </tr>
 
                         <div id="bi_projlist">

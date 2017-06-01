@@ -180,10 +180,11 @@ app.controller('MainCtrl', function($scope, $http) {
                 }
             );
     }
-
     /**Select to view building in Building Information*/
-    $scope.view = function(index) {
-        $scope.details = $scope.buildingdirData[index];
+    $scope.viewBuildingDetails = function(index){
+    $scope.CurrentID = $scope.buildingdirData[index];
     }
+
+
 });
 //[Angular] Controller End
