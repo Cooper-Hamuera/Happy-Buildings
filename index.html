@@ -79,9 +79,11 @@
               <td>{{buildings.BuildingType}}</td>
               <td>{{buildings.ConstructionDate}}</td>
               <td><div class="btn-group">
-                <button type="button" class="btn btn-default btn" ng-click="view($index)"><i class="glyphicon glyphicon-list-alt"></i></button>
-                <button type="button" class="btn btn-default btn" ng-show="adminView" ng-click="edit($index);"><i class="glyphicon glyphicon-pencil"></i></button>
-                <button type="button" class="btn btn-default btn" ng-show="adminView" ng-click="delete();"><i class="glyphicon glyphicon-trash"></i></button>
+                <!--view button for building information-->
+                <button type="submit" class="btn btn-default btn" ng-click="view($index)"><i class="glyphicon glyphicon-list-alt"></i>View</button>
+                <!--view button for building information-->
+                <button type="button" class="btn btn-default btn" ng-show="adminView" ng-click="edit($index)"><i class="glyphicon glyphicon-pencil"></i></button>
+                <button type="button" class="btn btn-default btn" ng-show="adminView" ng-click="delete()"><i class="glyphicon glyphicon-trash"></i></button>
               </div></td>
             </tr>
             </tbody>
@@ -134,8 +136,12 @@
         <div id="bi_info">
         <form>
           <table align="center">
-            <tr ng-repeat="i in buildingdirData">
-            <tr>
+
+            <!--issue here with show/hide+ng-repeat for building information form-->
+            <div ng-repeat="i in buildingdirData">
+              <!--issue here with show/hide+ng-repeat for building information form-->
+
+              <tr>
               <td width="43%" class="right">Building ID:</td>
               <td>{{i.ID}}</td>
             </tr>
@@ -155,7 +161,7 @@
               <td width="43%" class="right">Construction Date:</td>
               <td>{{i.Construction Date}}</td>
             </tr>
-
+            </div>
            <div id="bi_projlist">
             <tr>
               <td width="43%" class="right">Project List:</td>

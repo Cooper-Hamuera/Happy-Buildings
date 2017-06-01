@@ -14,7 +14,7 @@ function openTab(evt, cityName) {
     document.getElementById(cityName).style.display = "block";
     evt.currentTarget.className += " active";
 }
-//Navagation bar tabs
+//Nav bar tabs
 
 /**
 
@@ -121,7 +121,7 @@ app.controller('MainCtrl', function($scope, $http) {
     $scope.building_ConstructionDate = "0001-01-01T00:00:00";
 
 
-    /**Add to Building Directory*/
+    /**Add to Building Directory JSON*/
     var AddId = $scope.building_ID;
     var AddOwner = $scope.building_Owner;
     var AddAddress = $scope.building_Address;
@@ -181,6 +181,7 @@ app.controller('MainCtrl', function($scope, $http) {
             );
     }
 
+    /**Select to view building in Building Information*/
     $scope.view = function(index) {
         $scope.details = $scope.buildingdirData[index];
     }
