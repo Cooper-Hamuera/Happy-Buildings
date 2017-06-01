@@ -46,25 +46,25 @@ app.controller('MainCtrl', function($scope, $http) {
 
     /**
 
-       >>Local JSON file requires HTML header source
-       >>Server URL's list
+     >>Local JSON file requires HTML header source
+     >>Server URL's list
 
-       $scope.loginLocation = 'https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/user_list.json';
-       $scope.loginLocation = 'https://happybuildings.sim.vuw.ac.nz/api/coopersamu/user_list.json';
+     $scope.loginLocation = 'https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/user_list.json';
+     $scope.loginLocation = 'https://happybuildings.sim.vuw.ac.nz/api/coopersamu/user_list.json';
 
-       $scope.buildingDir = https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/building_dir.json;
-       $scope.buildingDir = https://happybuildings.sim.vuw.ac.nz/api/coopersamu/building_dir.json;
+     $scope.buildingDir = https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/building_dir.json;
+     $scope.buildingDir = https://happybuildings.sim.vuw.ac.nz/api/coopersamu/building_dir.json;
 
-       $scope.project = https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/project.json;
-       $scope.project = https://happybuildings.sim.vuw.ac.nz/api/coopersamu/project.json;
+     $scope.project = https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/project.json;
+     $scope.project = https://happybuildings.sim.vuw.ac.nz/api/coopersamu/project.json;
 
-       $scope.work = https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/work.json;
-       $scope.work = https://happybuildings.sim.vuw.ac.nz/api/coopersamu/work.json;
+     $scope.work = https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/work.json;
+     $scope.work = https://happybuildings.sim.vuw.ac.nz/api/coopersamu/work.json;
 
-       $scope.issue = https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/issue.json;
-       $scope.issue = https://happybuildings.sim.vuw.ac.nz/api/coopersamu/issue.json;
+     $scope.issue = https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/issue.json;
+     $scope.issue = https://happybuildings.sim.vuw.ac.nz/api/coopersamu/issue.json;
 
-       **/
+     **/
 
     /**check login JSON*/
     $scope.get = $http.get($scope.loginLocation)                                //Fetch the JSON file from the location in the variable
@@ -116,7 +116,7 @@ app.controller('MainCtrl', function($scope, $http) {
         $scope.feedback="";
     };
 
-    /**check Building Directory JSON*/
+    /**Show Building Directory JSON*/
     $scope.get = $http.get($scope.buildingdirLocation)                                //Fetch the JSON file from the location in the variable
         .then(
             function successCall(response) {
@@ -133,13 +133,14 @@ app.controller('MainCtrl', function($scope, $http) {
     $scope.building_Type =  "";
     $scope.building_ConstructionDate = "0001-01-01T00:00:00";
 
+    /**Add to Building Directory*/
     var AddId = $scope.building_ID;
     var AddOwner = $scope.building_Owner;
     var AddAddress = $scope.building_Address;
     var AddBuildingType = $scope.building_Type;
     var AddConstructionDate = $scope.building_ConstructionDate;
     var read = $scope.buildingdirLocation;
-    var write = 'https://happybuildings.sim.vuw.ac.nz/api/edwardlewiupdate.building.json';
+    var write = 'https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/update.building.json';
     var sourceObj = {
         "ID": AddId,
         "Owner": AddOwner,
@@ -147,7 +148,7 @@ app.controller('MainCtrl', function($scope, $http) {
         "BuildingType": "Castle",
         "ConstructionDate": "0001-01-01T00:00:00"
     };
-    $scope.Add = function() {
+    $scope.Add = function() { //adds element to the building directory JSON
         var AddId = $scope.building_ID;
         var AddOwner = $scope.building_Owner;
         var AddAddress = $scope.building_Address;
@@ -167,13 +168,13 @@ app.controller('MainCtrl', function($scope, $http) {
             data: sourceObj,
             headers: {'Content-Type': 'application/json'}
         }).then(function successCall(response) {
-                    $scope.building_feedback = "Post>> " + JSON.stringify(sourceObj);
-                }, function errorCall(response) {
-                    $scope.building_feedback = "Error posting:" + " Status: "+ response.status + " Writing: " + JSON.stringify(sourceObj);
-                }
-            );
+                $scope.building_feedback = "Post>> " + JSON.stringify(sourceObj);
+            }, function errorCall(response) {
+                $scope.building_feedback = "Error posting:" + " Status: "+ response.status + " Writing: " + JSON.stringify(sourceObj);
+            }
+        );
     }
-    $scope.Update = function() {
+    $scope.Update = function() {    //updates the display for the Building Directory
         $scope.promise2 = $http.get($scope.buildingdirLocation)
             .then(function successCall(response) {
                     $scope.building_feedback = "Get>> " + JSON.stringify(response.data);
@@ -192,26 +193,5 @@ app.controller('MainCtrl', function($scope, $http) {
             );
     }
 
-    /**$scope.edit = function(id) {
-        //search user and update it
-        $scope.buildingObject = id;
-        $scope.buildingEntry = angular.copy($scope.buildingdirData[id]);
-        console.log($scope.buildingObject);
-    }
-    $scope.add = function() {
-        console.log($scope.buildingObject);
-        if($scope.buildingdirData[$scope.buildingObject] == null) {
-            //this is new record
-            $scope.buildingdirData.push($scope.buildingEntry);
-        } else {
-            //for existing record
-            //and update it.
-            $scope.buildingdirData[$scope.buildingObject] = $scope.buildingEntry;
-        }
-
-        //clear the add record form
-        $scope.buildingEntry = {};
-        $scope.buildingObject = '';
-    }*/
-    });
+});
 //[Angular] Controller End

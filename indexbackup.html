@@ -50,6 +50,7 @@
     <div class="header">
         <h1><center>HAPPY BUILDINGS</center> </h1>
     </div>
+
     <!--Navagation bar title-->
 
 
@@ -95,28 +96,18 @@
                         <div class="form-group row" align="center">
 
                             <div class="col-sm-2">
-                                <input type="text" class="form-control ng-valid ng-dirty ng-touched" id="b_Id" placeholder="Building ID" ng-model="building_ID"/>
-                            </div>
+                                <INPUT type="text" class="form-control" id="b_Id" placeholder="Building ID" ng-model="building_ID"/>
 
-                            <div class="col-sm-2">
-                                <input type="text" class="form-control ng-valid ng-dirty ng-touched" id="b_Owner" placeholder="Building Owner" ng-model="building_Owner"/>
-                            </div>
+                                <INPUT type="text" class="form-control" id="b_Owner" placeholder="Building Owner" ng-model="building_Owner"/>
 
-                            <div class="col-sm-2">
-                                <input type="text" class="form-control ng-valid ng-dirty ng-touched" id="b_Address" placeholder="Building Address" ng-model="building_Address"/>
-                            </div>
+                                <INPUT type="text" class="form-control" id="b_Address" placeholder="Building Address" ng-model="building_Address"/>
 
-                            <div class="col-sm-2">
-                                <input type="text" class="form-control ng-valid ng-dirty ng-touched" id="b_Type" placeholder="Building Type" ng-model="building_Type"/>
-                            </div>
+                                <INPUT type="text" class="form-control" id="b_Type" placeholder="Building Type" ng-model="building_Type"/>
 
-                            <div class="col-sm-2">
-                                <input type="text" class="form-control ng-valid ng-dirty ng-touched" id="b_ConstructionDate" placeholder="Construction Date" ng-model="building_ConstructionDate"/>
-                            </div>
+                                <INPUT type="text" class="form-control" id="b_ConstructionDate" placeholder="Construction Date" ng-model="building_ConstructionDate"/>
 
-                            <div class="btn-group col-sm-2">
-                                <button type="button" input type="submit" value="post" class="btn btn-primary btn" ng-click="Add()"><i class="glyphicon glyphicon glyphicon-ok-circle"></i>Add</button>
-                                <button type="button" input type="submit" value="get" class="btn btn-primary btn" ng-click="Update()"><i class="glyphicon glyphicon glyphicon-cloud"></i>Update</button>
+                                <button type="submit" value="post" ng-click="Add()"><i class="glyphicon glyphicon-ok-circle"></i>Add</button>
+                                <button type="submit" value="get" ng-click="Update()"><i class="glyphicon glyphicon-cloud"></i>Update</button>
                             </div>
 
                             <br><br>
@@ -127,32 +118,6 @@
 
                     </form>
 
-                    <!--<table id="bdInfo" align="center">
-
-                       <tr>
-                         <td class="right">Building ID:</td>
-                         <td class="right">Owner:</td>
-                         <td class="right">Address:</td>
-                         <td class="right">Type:</td>
-                         <td class="right">Construction Date:</td>
-
-                       </tr>
-                       <td Width="57%"><input type="text" name="bId" id="b_Id" size="15" autofocus="autofocus" required="required"></td>
-                       <td Width="57%"><input type="text" name="building owner" id="b_Owner" size="15" required="required"></td>
-                       <td Width="57%"><input type="text" name="bAddress" id="b_Ad" size="15" required="required"></td>
-                       <td Width="57%"><input type="text" name="bType" id="b_Type" size="15" required="required"></td>
-                       <td Width="57%"><input type="text" name="bCdate" id="b_Cd" size="15" required="required"></td>
-                       <td ng-model="input">
-
-                         <button type="button" ng-click="add()">View</button>
-                         <button type="submit" ng-click="add()">+</button>
-                         <button type="submit" ng-click="add()">-</button>
-                         <li ng-repeat="item in items">
-                           <button ng-click="remove($index)">Remove</button>
-                         </li>
-                       </td>
-                       </tr>
-                       </table>-->
                     <table id="bd_com">
                         <tr>
                             <td class="comments">Comments:</td>
@@ -243,18 +208,7 @@
                                     </tr>
                                 </table>
                             </div>
-                            <!--      <tr>
-                                    <td class="comments">Comments:</td>
 
-                                  </tr>
-                                  <tr>
-                                    <td>
-                                      <textarea name="message" id="message" cols="50" rows="6"></textarea>
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td colspan="2" class="center"><input <type"submit" value="Send Now"></td>
-                                  </tr> -->
                         </table>
                     </form>
 
@@ -263,82 +217,82 @@
 
 
         </div>
-        <!--Building Information-->
-
-
-        <!--Project Information-->
-        <div id="Project Information" class="tabcontent">
-            <h3><center>Project Information</center></h3>
-            <div id="pi_content">
-                <div id="pi_main_content" align="center">
-                    <form>
-                        <table align="center">
-                            <tr>
-                                <td width="43%" class="right">Project Title:</td>
-                                <td Width="57%"><input type="text" name="pTitle" id="pTitle" size="50" autofocus="autofocus" required="required"></td>
-                            </tr>
-                            <tr>
-                                <td width="43%" class="right">Project Status:</td>
-                                <td Width="57%"><input type="text" name="pStatus" id="pStatus" size="50" ></td>
-                            </tr>
-                            <tr>
-                                <td class="right">Start Date</td>
-                                <td Width="57%"><input type="text" name="sDate" id="sDate" size="50" ></td>
-                            </tr>
-                            <tr>
-                                <td width="43%" class="right">End Date:</td>
-                                <td Width="57%"><input type="text" name="eDate" id="eDate" size="50" ></td>
-                            </tr>
-                            <tr>
-                                <td width="43%" class="right">Manager:</td>
-                                <td Width="57%"><input type="text" name="manager" id="manager" size="50" ></td>
-                            </tr>
-                            <tr>
-                                <td width="43%" class="right">Work List:</td>
-                                <td Width="57%"><input type="text" name="workList" id="workList" size="50" ></td>
-                            </tr>
-                            <form id="bi_plist">
-                                <tr>
-                                    <td width="43%" class="right">Project List:</td>
-                                </tr>
-                                <table id="wList" cellpadding="10">
-                                    <tr>
-                                        <td width="43%" class="right">Work ID:</td>
-                                        <td width="43%" class="right">Start Date:</td>
-                                        <td width="43%" class="right">End Date:</td>
-                                        <td width="43%" class="right">Contractor:</td>
-                                    </tr>
-                                    <tr>
-                                        <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
-                                        <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
-                                        <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
-                                        <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
-                                        <td ng-model="input">
-                                            <button type="button" ng-click="add()">View</button>
-                                            <button type="submit" ng-click="add()">Add</button>
-                                            <li ng-repeat="item in items">
-                                                <button ng-click="remove($index)">Remove</button>
-                                            </li>
-                                        </td>
-                                    </tr>
-                                </table>
-                                <table id="p_com">
-                                    <tr>
-                                        <td class="comments">Comments:</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <textarea name="message" id="pi_message" cols="50" rows="6"></textarea>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </form>
-                        </table>
-                </div>
-            </div><!--end main_content-->
-
-        </div><!--end-->
     </div>
+    <!--Building Information-->
+
+
+    <!--Project Information-->
+    <div id="Project Information" class="tabcontent">
+        <h3><center>Project Information</center></h3>
+        <div id="pi_content">
+            <div id="pi_main_content" align="center">
+                <form>
+                    <table align="center">
+                        <tr>
+                            <td width="43%" class="right">Project Title:</td>
+                            <td Width="57%"><input type="text" name="pTitle" id="pTitle" size="50" autofocus="autofocus" required="required"></td>
+                        </tr>
+                        <tr>
+                            <td width="43%" class="right">Project Status:</td>
+                            <td Width="57%"><input type="text" name="pStatus" id="pStatus" size="50" ></td>
+                        </tr>
+                        <tr>
+                            <td class="right">Start Date</td>
+                            <td Width="57%"><input type="text" name="sDate" id="sDate" size="50" ></td>
+                        </tr>
+                        <tr>
+                            <td width="43%" class="right">End Date:</td>
+                            <td Width="57%"><input type="text" name="eDate" id="eDate" size="50" ></td>
+                        </tr>
+                        <tr>
+                            <td width="43%" class="right">Manager:</td>
+                            <td Width="57%"><input type="text" name="manager" id="manager" size="50" ></td>
+                        </tr>
+                        <tr>
+                            <td width="43%" class="right">Work List:</td>
+                            <td Width="57%"><input type="text" name="workList" id="workList" size="50" ></td>
+                        </tr>
+                        <form id="bi_plist">
+                            <tr>
+                                <td width="43%" class="right">Project List:</td>
+                            </tr>
+                            <table id="wList" cellpadding="10">
+                                <tr>
+                                    <td width="43%" class="right">Work ID:</td>
+                                    <td width="43%" class="right">Start Date:</td>
+                                    <td width="43%" class="right">End Date:</td>
+                                    <td width="43%" class="right">Contractor:</td>
+                                </tr>
+                                <tr>
+                                    <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
+                                    <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
+                                    <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
+                                    <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
+                                    <td ng-model="input">
+                                        <button type="button" ng-click="add()">View</button>
+                                        <button type="submit" ng-click="add()">Add</button>
+                                        <li ng-repeat="item in items">
+                                            <button ng-click="remove($index)">Remove</button>
+                                        </li>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table id="p_com">
+                                <tr>
+                                    <td class="comments">Comments:</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <textarea name="message" id="pi_message" cols="50" rows="6"></textarea>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </table>
+            </div>
+        </div><!--end main_content-->
+
+    </div><!--end-->
     <!--Project Information-->
 
 
@@ -469,8 +423,7 @@
         </div><!--end content-->
         <div id="footer"></div><!--end footer-->
     </div>
-</div>
-<!--Issue-->
+    <!--Issue-->
 
 </body>
 <!--Body end-->
