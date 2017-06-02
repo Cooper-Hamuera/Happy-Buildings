@@ -34,7 +34,7 @@
             <!--<div ng-bind="username"></div>-->
             <input class= "if" type="password" placeholder="Enter Password" id="password" ng-model ="password"/>
             <!-- <div ng-bind="password"></div>-->
-            <input type="submit" class="submit button" value="Login" ng-click="checkLogin()"/>
+            <input type="submit" class="submit button" value="Login" ng-click="checkLogin()" onclick="openTab(event, 'Building Directory')"/>
             <input type="submit" class="submit button" value="Cancel" ng-click="cancelLogin()"/>
             <div id="feedback" ng-bind="feedback"></div> <!--[Angular] Feedback-->
         </div>
@@ -80,9 +80,8 @@
                         <td>{{buildings.ConstructionDate}}</td>
                         <td><div class="btn-group">
                             <button type="submit" class="btn btn-default btn" ng-click="viewBuildingDetails($index)" onclick="openTab(event, 'Building Information')"><i class="glyphicon glyphicon-list-alt"></i>View</button>
-
-                            <button type="button" class="btn btn-default btn" ng-show="adminView" ng-click="edit($index);"><i class="glyphicon glyphicon-pencil"></i></button>
-                            <button type="button" class="btn btn-default btn" ng-show="adminView" ng-click="delete();"><i class="glyphicon glyphicon-trash"></i></button>
+                            <button type="button" class="btn btn-default btn" ng-show="adminView" ng-click="editBuilding($index)"><i class="glyphicon glyphicon-pencil"></i></button>
+                            <button type="button" class="btn btn-default btn" ng-show="adminView" ng-click="removeBuilding($index)"><i class="glyphicon glyphicon-trash"></i></button>
                         </div></td>
                     </tr>
                     </tbody>
@@ -111,16 +110,6 @@
                 </form>
                 <!--Add Buildings-->
 
-                <table id="bd_com">
-                    <tr>
-                        <td class="comments">Comments:</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <textarea name="message" id="bd_message" cols="50" rows="6"></textarea>
-                        </td>
-                    </tr>
-                </table>
             </form>
         </div><!--end main_content-->
     </div>
@@ -137,23 +126,23 @@
                     <table align="Left">
                         <tr>
                             <td width="43%" class="right">Building ID:</td>
-                            <td>{{CurrentID.ID}}</td>
+                            <td>{{CurrentBuildingId.ID}}</td>
                         </tr>
                         <tr>
                             <td width="43%" class="right">Building Owner:</td>
-                            <td>{{CurrentID.Owner}}</td>
+                            <td>{{CurrentBuildingId.Owner}}</td>
                         </tr>
                         <tr>
                             <td width="43%" class="right">Building Address</td>
-                            <td>{{CurrentID.Address}}</td>
+                            <td>{{CurrentBuildingId.Address}}</td>
                         </tr>
                         <tr>
                             <td width="43%" class="right">Building Type:</td>
-                            <td>{{CurrentID.BuildingType}}</td>
+                            <td>{{CurrentBuildingId.BuildingType}}</td>
                         </tr>
                         <tr>
                             <td width="43%" class="right">Construction Date:</td>
-                            <td>{{CurrentID.ConstructionDate}}</td>
+                            <td>{{CurrentBuildingId.ConstructionDate}}</td>
                         </tr>
 
                         <!--<td width="43%" class="right">"bi_projlist"</td> -->
@@ -171,8 +160,8 @@
                         <tr><th>Project ID</th><th>Name</th><th>Status</th><th>Start Date</th><th>End Date</th></tr>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="buildings in buildingdirData">
-                            <td>{{buildings.ID}}</td>
+                        <tr ng-repeat="buildings in projectLocation">
+                            <td>{{buil.ID}}</td>
                             <td>{{buildings.Owner}}</td>
                             <td>{{buildings.Address}}</td>
                             <td>{{buildings.BuildingType}}</td>

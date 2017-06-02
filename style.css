@@ -21,7 +21,7 @@ body {
 /* Login window*/
 #loginw{
   border-radius: 5px;
-  background: rgba(100, 154, 254, 0.5);
+  background: rgba(150, 154, 154, 0.9);
   padding: 20px;
   width: 50%;
   margin: auto;
@@ -54,14 +54,14 @@ div.header {
   width: 100%;
   height: 20%;
   border: 1px solid #0B3c5d;
-  background-color: #4484c3;
+  background: rgba(150, 154, 154, 0.9);
 }
 
 /* Style the Navigation tab */
 div.tab {
   overflow: hidden;
   border: 1px solid #0B3c5d;
-  background-color: #4484c3;
+  background: rgba(150, 154, 154, 0.9);
 }
 
 /* Style the buttons inside the tab */
@@ -82,7 +82,7 @@ div.tab button:hover {
   background-color: #ddd;
 }
 
-/* Create an active/current tablink class */
+/* Create an active/current tab class */
 div.tab button.active {
   background-color: #d9d9d9;
 }
@@ -105,12 +105,13 @@ div.Building Directory{
 /* Styles the information of Building Directory form*/
 #bd_main_content{
   border-radius: 5px;
-  background: rgba(100, 154, 254, 0.3);
+  background: rgba(150, 154, 154, 0.9);
   padding: 20px;
   width: 90%;
   margin: 20px 40px;
   fontsize: 20px;
   font-family:"Lato", sans-serif, bold;
+
 }
 table#bdInfo{
   table-layout:fixed;
@@ -127,7 +128,7 @@ table#bdInfo{
 /* Styles the information of Building Information form*/
 #bi_main_content{
   border-radius: 5px;
-  background: rgba(100, 154, 254, 0.3);
+  background: rgba(150, 154, 154, 0.9);
   padding: 40px;
   width: 90%;
   margin: auto;
@@ -149,7 +150,7 @@ table#pList{
 /* Styles the information of Project Information form*/
 #pi_main_content{
   border-radius: 5px;
-  background: rgba(100, 154, 254, 0.3);
+  background: rgba(150, 154, 154, 0.9);
   padding: 20px;
   width: 90%;
   margin: auto;
@@ -170,7 +171,7 @@ table#wList {
 /* Styles the information of Work form*/
 #w_main_content{
   border-radius: 5px;
-  background: rgba(100, 154, 254, 0.3);
+  background: rgba(150, 154, 154, 0.9);
   padding: 20px;
   width: 90%;
   margin: auto;
@@ -191,7 +192,7 @@ table#iList {
 /* Styles the information of Issue form*/
 #i_main_content{
   border-radius: 5px;
-  background: rgba(100, 154, 254, 0.3);
+  background: rgba(150, 154, 154, 0.9);
   padding: 20px;
   width: 90%;
   margin: auto;

@@ -105,12 +105,13 @@ div.Building Directory{
 /* Styles the information of Building Directory form*/
 #bd_main_content{
     border-radius: 5px;
-    background: rgba(100, 154, 254, 0.3);
+    background: rgba(100, 154, 154, 0.9);
     padding: 20px;
     width: 90%;
     margin: 20px 40px;
     fontsize: 20px;
     font-family:"Lato", sans-serif, bold;
+
 }
 table#bdInfo{
     table-layout:fixed;
@@ -127,7 +128,7 @@ table#bdInfo{
 /* Styles the information of Building Information form*/
 #bi_main_content{
     border-radius: 5px;
-    background: rgba(100, 154, 254, 0.3);
+    background: rgba(100, 154, 154, 0.9);
     padding: 40px;
     width: 90%;
     margin: auto;
@@ -149,7 +150,7 @@ table#pList{
 /* Styles the information of Project Information form*/
 #pi_main_content{
     border-radius: 5px;
-    background: rgba(100, 154, 254, 0.3);
+    background: rgba(100, 154, 154, 0.9);
     padding: 20px;
     width: 90%;
     margin: auto;
@@ -170,7 +171,7 @@ table#wList {
 /* Styles the information of Work form*/
 #w_main_content{
     border-radius: 5px;
-    background: rgba(100, 154, 254, 0.3);
+    background: rgba(100, 154, 154, 0.9);
     padding: 20px;
     width: 90%;
     margin: auto;
@@ -191,7 +192,7 @@ table#iList {
 /* Styles the information of Issue form*/
 #i_main_content{
     border-radius: 5px;
-    background: rgba(100, 154, 254, 0.3);
+    background: rgba(100, 154, 154, 0.9);
     padding: 20px;
     width: 90%;
     margin: auto;
