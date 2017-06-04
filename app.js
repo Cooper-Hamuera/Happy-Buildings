@@ -183,8 +183,11 @@ app.controller('MainCtrl', function($scope, $http) {
             );
     }
 
-    //Select to view building in Building Information based on the ID
+    //View building from Building Directory in Building Information based on the ID
+    $scope.BuildingInfoBuildingId="";
     $scope.viewBuildingDetails = function(index){
+        console.log($scope.buildingdirData[index].ID);
+        $scope.BuildingInfoBuildingId=$scope.buildingdirData[index].ID;
     $scope.CurrentBuildingId = $scope.buildingdirData[index];
     }
 
@@ -199,42 +202,107 @@ app.controller('MainCtrl', function($scope, $http) {
     }
 
 
-
-    /**Show Project List JSON*/
-    $scope.project_FetchError=false;
+//Project List
+    /**Show Project List JSON
     $scope.project_feedback="waiting";
     $scope.myArray=[];
-
-    $scope.BuildingInfoBuildingId="";
-    $scope.buildingIdIndex = function (index) {
-        $scope.BuildingInfoBuildingId = JSON.stringify($scope.buildingdirData[index]);
-    }
-
     var tmpArr=[];
-    var x=10;
+    var x=2;
     var i=0;
+
+    //project file checking loop
     for(var i=1; i<x; i++){
+        //check each project.[i].json file
         $scope.projectLocation = 'https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/project.'+[i]+'.json';
 
         $http.get($scope.projectLocation)
-            .then(
-                function successCall(response){
-                    tmpArr= response.Data;
-                    $scope.myArray.push(tmpArr);
-                    $scope.project_feedback='Server Loaded';
+            .success(function(data){
+
+                    //if $scope.BuildingInfoBuildingId == Project Building ID
+                        // Show in the Project List
+                            //ProjectID, Name, Status, StartDate, EndDate
+
+            })
+            .error(function(data){
+                //send feedback saying no projects
+                break; //break file scanning loop
+                })
+
+        x++;                //adds 1 to var x to create an infinite loop, only breaks on error
+    }*/
+
+//Project List
+    /**$scope.project_feedback="waiting";
+    $scope.myArray=[];
+    var tmpArr=[];
+    var x=2;
+    var i=0;
+
+    //project file checking loop
+    for(var i=1; i<x; i++){
+        //check each project.[i].json file
+        $scope.projectLocation = 'https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/project.'+[i]+'.json';
+
+        $http.get($scope.projectLocation)
+            .success(function(data){
+
+                //if $scope.BuildingInfoBuildingId == Project Building ID
+                // Show in the Project List
+                //ProjectID, Name, Status, StartDate, EndDate
+
+            })
+            .error(function(data){
+                //send feedback saying no projects
+                break; //break file scanning loop
+            })
+
+        x++;                //adds 1 to var x to create an infinite loop, only breaks on error
+    }*/
+});
+    app.controller('ProjectController', function($scope, $http) {
+    $scope.project_feedback="waiting";
+    $scope.ProjectFileArray=[];
+    var tmpArr=[];
+    var x=4;
+    var i=0;
+
+    //project file checking loop
+    for(var i=1; i<x; i++) {
+        //check each project.[i].json file
+        $scope.projectLocation = 'https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/project.' + [i] + '.json';
+
+        $http.get($scope.projectLocation)
+            .success(function(data) {
+                    tmpArr = data;
+                    $scope.ProjectFileArray.push(tmpArr);
+                    $scope.project_feedback = 'Server Loaded';
+                console.log(tmpArr.hasOwnProperty("ProjectID"));
+                console.log(tmpArr.hasOwnProperty("Message"));
                 }
             );
-    }
 
 
-    /**
-     while(true){
-     i++;
-     if(
-     $scope.projectLocation = 'https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/project.'+[i]+'.json';
+        }
 
-     }
-     * */
+    });
+
+
+
+    /**$scope.get = $http.get($scope.buildingdirLocation)                                //Fetch the JSON file from the location in the variable
+        .then(
+            function successCall(response) {
+                $scope.buildingdirData = response.data.buildings;                     //Saves json response into this variable
+            }, function errorCall(response) {
+                $scope.feedback = "Error reading file: " + response.status;           // displays feedback error if JSON form incorrect
+                $scope.buildingdirData = null;                                        // incorrect JSON form will keep it set at null
+            }
+        );
+
+    $scope.building_ID = "";
+    $scope.building_Owner = "";
+    $scope.building_Address = "";
+    $scope.building_Type =  "";
+    $scope.building_ConstructionDate = "0001-01-01T00:00:00";*/
 
     /**for(var i=1; i<x; i++){
         $scope.projectLocation = 'https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/project.'+[i]+'.json';
@@ -346,5 +414,5 @@ app.controller('MainCtrl', function($scope, $http) {
     }
 */
 
-});
+//});
 //[Angular] Controller End

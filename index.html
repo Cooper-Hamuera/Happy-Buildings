@@ -79,7 +79,7 @@
             <td>{{buildings.BuildingType}}</td>
             <td>{{buildings.ConstructionDate}}</td>
             <td><div class="btn-group">
-              <button type="submit" class="btn btn-default btn" ng-click="viewBuildingDetails($index)" ng-click="buildingIdIndex($index)" onclick="openTab(event, 'Building Information')"><i class="glyphicon glyphicon-list-alt"></i>View</button>
+              <button type="submit" class="btn btn-default btn" ng-click="viewBuildingDetails($index)" onclick="openTab(event, 'Building Information')"><i class="glyphicon glyphicon-list-alt"></i>View</button>
               <button type="button" class="btn btn-default btn" ng-show="adminView" ng-click="editBuilding($index)"><i class="glyphicon glyphicon-pencil"></i></button>
               <button type="button" class="btn btn-default btn" ng-show="adminView" ng-click="removeBuilding($index)"><i class="glyphicon glyphicon-trash"></i></button>
             </div></td>
@@ -117,7 +117,7 @@
 
 
   <!--Building Information-->
-  <div id="Building Information" class="tabcontent">
+  <div id="Building Information" class="tabcontent" ng-controller="ProjectController">
     <h3><center>Building Information</center></h3>
 
     <div id="bi_main_content" align="center">
@@ -160,12 +160,12 @@
                 <tr><th>Project ID</th><th>Name</th><th>Status</th><th>Start Date</th><th>End Date</th></tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="buildings in projectLocation">
-                  <td>{{buildings.ID}}</td>
-                  <td>{{buildings.Owner}}</td>
-                  <td>{{buildings.Address}}</td>
-                  <td>{{buildings.BuildingType}}</td>
-                  <td>{{buildings.ConstructionDate}}</td>
+                <tr ng-repeat="Project in ProjectFileArray">
+                  <td>{{Project.ProjectID}}</td>
+                  <td>{{Project.Name}}</td>
+                  <td>{{Project.Status}}</td>
+                  <td>{{Project.StartDate}}</td>
+                  <td>{{Project.EndDate}}</td>
                   <td><div class="btn-group">
                     <button type="submit" class="btn btn-default btn" ng-click="viewProjectDetails($index)" onclick="openTab(event, 'Project Information')"><i class="glyphicon glyphicon-list-alt"></i>View</button>
                     <button type="button" class="btn btn-default btn" ng-show="adminView" ng-click="editProject($index);"><i class="glyphicon glyphicon-pencil"></i></button>
@@ -202,6 +202,7 @@
                   <br><br>
                   {{project_feedback}}
                   {{BuildingInfoBuildingId}}
+                  {{CurrentBuildingId}}
                 </div>
               </form>
         </form>

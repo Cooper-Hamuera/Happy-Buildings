@@ -1,4 +1,0 @@
-{"buildings":[
-  {"ID":"123","Owner":"Joe Doe","Address":"20 Lambton Quay","BuildingType":null,"ConstructionDate":"0001-01-01T00:00:00"},
-  {"ID":"222","Owner":"John Smith","Address":"20 Dixon Street","BuildingType":null,"ConstructionDate":"0001-01-01T00:00:00"}
-]}
