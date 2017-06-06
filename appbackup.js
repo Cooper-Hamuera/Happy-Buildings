@@ -17,24 +17,14 @@ function openTab(evt, cityName) {
 //Nav bar tabs
 
 /**
-
- >>Local JSON file requires HTML header source
- >>Server URL's list
-
- $scope.loginLocation = 'https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/user_list.json';
- $scope.loginLocation = 'https://happybuildings.sim.vuw.ac.nz/api/coopersamu/user_list.json';
-
- $scope.buildingDir = https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/building_dir.json;
- $scope.buildingDir = https://happybuildings.sim.vuw.ac.nz/api/coopersamu/building_dir.json;
- https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/update.building.json
-
- $scope.project = https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/project.[number].json;
- $scope.project = https://happybuildings.sim.vuw.ac.nz/api/coopersamu/project.[number].json;
- https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/update.project.json
+ edwardlewi
+ coopersamu
  **/
 
 //[Angular] Controller index
 app.controller('MainCtrl', function($scope, $http) {
+    var servername='edwardlewi';
+
     $scope.loginVisible = true;         //login visibility (Show/Hide)
     $scope.indexVisible = false;        //index visibility (Show/Hide)
     $scope.adminView = false;           //admin visibility (Show/Hide)
@@ -48,15 +38,15 @@ app.controller('MainCtrl', function($scope, $http) {
     $scope.userOwner="owner";
     $scope.userContractor="contractor";
 
+
+
     //JSON file check and stores info for each file
     $scope.loginData = null;
-    $scope.loginLocation = 'https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/user_list.json';
+    $scope.loginLocation = 'https://happybuildings.sim.vuw.ac.nz/api/'+servername+'/user_list.json';
 
     $scope.buildingdirData = null;
-    $scope.buildingdirLocation = 'https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/building_dir.json';
+    $scope.buildingdirLocation = 'https://happybuildings.sim.vuw.ac.nz/api/'+servername+'/building_dir.json';
     $scope.projectData= null;
-    //$scope.projectLocation = 'https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/project.[number].json';
-
 
     /**Check Login JSON*/
     $scope.get = $http.get($scope.loginLocation)                                //Fetch the JSON file from the location in the variable
@@ -134,7 +124,7 @@ app.controller('MainCtrl', function($scope, $http) {
             ConstructionDate : $scope.building_ConstructionDate,
 
         };
-        var res = $http.post('https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/update.building.json', dataObjBuild);
+        var res = $http.post('https://happybuildings.sim.vuw.ac.nz/api/'+servername+'/update.building.json', dataObjBuild);
         res.success(function(data, status, headers, config) {
             $scope.building_feedback = data;
             $scope.building_feedback = "Building Added";
@@ -169,20 +159,24 @@ app.controller('MainCtrl', function($scope, $http) {
 });
 app.controller('ProjectController', function($scope, $http) {
 
+    var servername='edwardlewi';
+
     /**Read Project into List*/
     $scope.buildingTagHide=false;
-    $scope.project_feedback="waiting";
+    $scope.project_feedback="";
     $scope.projectFileArray=[];
+
     var tmpArr=[];
     var x=20;
-    var i=0;
+    var i=1;
+
     var countProjFiles=0;
 
     //project file checking loop
     for(var i=1; i<x; i++) {
 
         //check each project.[i].json file
-        $scope.projectLocation = 'https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/project.' + [i] + '.json';
+        $scope.projectLocation = 'https://happybuildings.sim.vuw.ac.nz/api/'+servername+'/project.' + [i] + '.json';
 
         $http.get($scope.projectLocation)
             .success(function(data) {
@@ -191,19 +185,32 @@ app.controller('ProjectController', function($scope, $http) {
                     $scope.project_feedback = 'Server Loaded';
                     console.log(tmpArr.hasOwnProperty("ProjectID"));
                     console.log(tmpArr.hasOwnProperty("Message"));
-                    countProjFiles++;
+
+
+                    function increment(n){
+
+                        n++;
+                        return n;
+                    }
+
+                    countProjFiles=increment(countProjFiles);
+                    console.log(countProjFiles);
+                    $scope.countId=countProjFiles;
                 }
             );
     }
-    var newProjId=countProjFiles+1;
+    countProjFiles=countProjFiles+1;
+    console.log(countProjFiles);
+
 
     /**Add Project into List*/
     $scope.AddProject = function () {
-        $scope.projectFileArray.push({'ProjectID':$scope.project_Id, 'Name':$scope.project_Name,
+        $scope.countId=countProjFiles;
+        $scope.projectFileArray.push({'ProjectID':$scope.countId, 'Name':$scope.project_Name,
             'BuildingID':$scope.buildingIdTag, 'Status':$scope.project_Status, 'StartDate':$scope.project_StartDate, 'EndDate':$scope.project_EndDate, 'ContactPerson':$scope.project_ContactPers, 'ProjectManager':$scope.project_Manager, 'Contractor':$scope.project_Contractor});
 
         var dataObjProj = {
-            ProjectID : $scope.project_Id,
+            ProjectID : $scope.countId,
             Name : $scope.project_Name,
             BuildingID : $scope.buildingIdTag,
             Status : $scope.project_Status,
@@ -213,10 +220,11 @@ app.controller('ProjectController', function($scope, $http) {
             ProjectManager : $scope.project_Manager,
             Contractor : $scope.project_Contractor,
         };
-        var res = $http.post('https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/update.project.json', dataObjProj);
+        var res = $http.post('https://happybuildings.sim.vuw.ac.nz/api/'+servername+'/update.project.json', dataObjProj);
         res.success(function(data, status, headers, config) {
             $scope.project_feedback = data;
             $scope.project_feedback = "Project Added";
+            countProjFiles=countProjFiles+1
         });
         res.error(function(data, status, headers, config) {
             alert( "failure message: " + JSON.stringify({data: data}));
@@ -239,8 +247,9 @@ app.controller('ProjectController', function($scope, $http) {
 
 //View the building
     $scope.viewProjectDetails = function(index){
-        $scope.ProjectInfoProjectId= $scope.projectFileArray[index].ID;
+        $scope.ProjectInfoProjectUrl='https://happybuildings.sim.vuw.ac.nz/api/'+servername+'/project.' + [i] + '.json';
+        $scope.ProjectInfoProjectId= $scope.projectFileArray[index];
         $scope.CurrentProjectId = $scope.projectFileArray[index];
-        console.log($scope.projectFileArray[index].ID);
+        console.log($scope.projectFileArray[index].ProjectID);
     }
 });

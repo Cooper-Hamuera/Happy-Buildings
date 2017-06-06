@@ -240,16 +240,19 @@ app.controller('ProjectController', function($scope, $http) {
         $scope.project_Contractor='';
     };
 
-//Remove from Building Directory*/
+//Remove from Project List*/
     $scope.removeProject = function(idx){
         $scope.projectFileArray.splice(idx,1)
     }
 
-//View the building
+//View the Project
     $scope.viewProjectDetails = function(index){
         $scope.ProjectInfoProjectUrl='https://happybuildings.sim.vuw.ac.nz/api/'+servername+'/project.' + [i] + '.json';
         $scope.ProjectInfoProjectId= $scope.projectFileArray[index];
         $scope.CurrentProjectId = $scope.projectFileArray[index];
         console.log($scope.projectFileArray[index].ProjectID);
     }
+
+
+
 });
