@@ -240,12 +240,17 @@ app.controller('ProjectController', function($scope, $http) {
         $scope.project_Contractor='';
     };
 
-//Remove from Project List*/
+    //Remove from Project List*/
     $scope.removeProject = function(idx){
         $scope.projectFileArray.splice(idx,1)
     }
 
-//View the Project
+    //Store Building ID to filter Project List
+    $scope.viewProjectStatus= function(index) {
+        $scope.StatusTag=projectFileArray[index].Status;
+    }
+
+    //View the Project
     $scope.viewProjectDetails = function(index){
         $scope.ProjectInfoProjectUrl='https://happybuildings.sim.vuw.ac.nz/api/'+servername+'/project.' + [i] + '.json';
         $scope.ProjectInfoProjectId= $scope.projectFileArray[index];
@@ -253,6 +258,11 @@ app.controller('ProjectController', function($scope, $http) {
         console.log($scope.projectFileArray[index].ProjectID);
     }
 
-
-
+    $scope.viewProjectArchive = function(index){
+        $scope.ProjectInfoProjectUrl='https://happybuildings.sim.vuw.ac.nz/api/'+servername+'/project.' + [i] + '.json';
+        $scope.ProjectInfoProjectStatus= $scope.projectFileArray[index];
+        $scope.CurrentProjectStatus= $scope.projectFileArray[index];
+        console.log($scope.projectFileArray[index].Status);
+    }
+    
 });

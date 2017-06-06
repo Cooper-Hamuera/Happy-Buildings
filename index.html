@@ -145,7 +145,7 @@
               <td width="43%" class="right">Construction Date:</td>
               <td>{{CurrentBuildingId.ConstructionDate}}</td>
             </tr>
-            <button type="submit" class="btn btn-default btn" ng-click="viewProjectDetails($index)" onclick="openTab(event, 'Project Archive')"><i class="glyphicon glyphicon-list-alt"></i>View Archive</button>
+            <button type="submit" class="btn btn-default btn" ng-click="viewProjectArchive($index)" onclick="openTab(event, 'Project Archive')"><i class="glyphicon glyphicon-list-alt"></i>View Archive</button>
           </table>
           </form>
             <form>
@@ -340,7 +340,7 @@
   </div>
   <!--Work-->
 
-
+  <!--Project Archive-->
   <div id="Project Archive" class="tabcontent">
     <h3><center>Project Archive</center></h3>
     <div id="pa_main_content" align="center">
@@ -350,7 +350,7 @@
           <tr><th>Project ID</th><th>Name</th><th>Status</th><th>Start Date</th><th>End Date</th></tr>
           </thead>
           <tbody>
-          <tr ng-repeat="Project in projectFileArray| filter:Status">
+          <tr ng-repeat="Project in projectFileArray| filter:StatusTag">
             <td>{{Project.ProjectID}}</td>
             <td>{{Project.Name}}</td>
             <td>{{Project.Status}}</td>
@@ -362,15 +362,14 @@
               <button type="button" class="btn btn-default btn" ng-show="adminView" ng-click="removeProject()"><i class="glyphicon glyphicon-trash"></i></button>
             </div></td>
           </tr>
-          <input ng-show="buildingTagHide" ng-model="buildingIdTag"/>
+          <input ng-show="buildingTagHide" ng-model="StatusTag"/>
           </tbody>
         </table>
 
       </form>
     </div><!--end main_content-->
   </div>
-  <!--Building Directory-->
-  <!--Issue-->
+  <!--Project Archive-->
 </div>
 </div><!--Nav Bar end-->
 
