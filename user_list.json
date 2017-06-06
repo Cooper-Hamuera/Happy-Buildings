@@ -1,5 +1,0 @@
-{"users": [
-  {"LoginName":"aaaa","Password":"1234","UserType":"owner"},
-  {"LoginName":"bbbb","Password":"4321","UserType":"manager"},
-  {"LoginName":"admin","Password":"password","UserType":"admin"}
-]}
