@@ -80,17 +80,19 @@
                         <td>{{buildings.ConstructionDate}}</td>
                         <td><div class="btn-group">
                             <button type="submit" class="btn btn-default btn" ng-click="viewBuildingDetails($index)" onclick="openTab(event, 'Building Information')"><i class="glyphicon glyphicon-list-alt"></i>View</button>
-                            <button type="button" class="btn btn-default btn" ng-show="adminView" ng-click="editBuilding($index)"><i class="glyphicon glyphicon-pencil"></i></button>
-                            <button type="button" class="btn btn-default btn" ng-show="adminView" ng-click="removeBuilding($index)"><i class="glyphicon glyphicon-trash"></i></button>
-                        </div></td>
+                        </div>
+                            <div class="btn-group" ng-show = "adminView">
+                                <!--<button type="button" class="btn btn-default btn" ng-click="editBuilding($index)"><i class="glyphicon glyphicon-pencil"></i></button>-->
+                                <button type="button" class="btn btn-default btn" ng-click="removeBuilding($index)"><i class="glyphicon glyphicon-trash"></i></button>
+                            </div></td>
                     </tr>
                     </tbody>
                 </table>
 
                 <!--Add Buildings-->
-                <form class="form-horizontal">
+                <form class="form-horizontal" >
                     <div class="form-group row" align="center">
-                        <div class="col-sm-2">
+                        <div class="col-sm-2" ng-show = "adminView">
                             <INPUT type="text" class="form-control" id="b_Id" placeholder="Building ID" ng-model="building_ID"/>
 
                             <INPUT type="text" class="form-control" id="b_Owner" placeholder="Building Owner" ng-model="building_Owner"/>
@@ -101,8 +103,7 @@
 
                             <INPUT type="text" class="form-control" id="b_ConstructionDate" placeholder="Construction Date" ng-model="building_ConstructionDate"/>
 
-                            <button type="submit" value="post" ng-click="AddBuilding()"><i class="glyphicon glyphicon-ok-circle"></i>Add</button>
-                            <button type="submit" value="get" ng-click="UpdateBuildingList()"><i class="glyphicon glyphicon-cloud"></i>Update</button>
+                            <button type="submit" value="post" ng-click="AddBuilding()"><i class="glyphicon glyphicon-ok-circle"></i>Add Building</button>
                         </div>
                         <br><br>
                         {{building_feedback}}
@@ -117,7 +118,7 @@
 
 
     <!--Building Information-->
-    <div id="Building Information" class="tabcontent">
+    <div id="Building Information" class="tabcontent" ng-controller="ProjectController">
         <h3><center>Building Information</center></h3>
 
         <div id="bi_main_content" align="center">
@@ -160,15 +161,14 @@
                         <tr><th>Project ID</th><th>Name</th><th>Status</th><th>Start Date</th><th>End Date</th></tr>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="buildings in projectLocation">
-                            <td>{{buil.ID}}</td>
-                            <td>{{buildings.Owner}}</td>
-                            <td>{{buildings.Address}}</td>
-                            <td>{{buildings.BuildingType}}</td>
-                            <td>{{buildings.ConstructionDate}}</td>
+                        <tr ng-repeat="Project in projectFileArray">
+                            <td>{{Project.ProjectID}}</td>
+                            <td>{{Project.Name}}</td>
+                            <td>{{Project.Status}}</td>
+                            <td>{{Project.StartDate}}</td>
+                            <td>{{Project.EndDate}}</td>
                             <td><div class="btn-group">
-                                <button type="submit" class="btn btn-default btn" ng-click="viewProjectDetails($index)" onclick="openTab(event, 'Building Information')"><i class="glyphicon glyphicon-list-alt"></i>View</button>
-
+                                <button type="submit" class="btn btn-default btn" ng-click="viewProjectDetails($index)" onclick="openTab(event, 'Project Information')"><i class="glyphicon glyphicon-list-alt"></i>View</button>
                                 <button type="button" class="btn btn-default btn" ng-show="adminView" ng-click="editProject($index);"><i class="glyphicon glyphicon-pencil"></i></button>
                                 <button type="button" class="btn btn-default btn" ng-show="adminView" ng-click="deleteProject();"><i class="glyphicon glyphicon-trash"></i></button>
                             </div></td>
@@ -179,13 +179,15 @@
 
                     <!--Add Projects-->
                     <form class="form-horizontal">
-                        <div class="form-group row" align="center">
+                        <div class="form-group row" align="center" ng-show = "adminView">
                             <div class="col-sm-2">
                                 <INPUT type="text" class="form-control" id="p_Id" placeholder="Project ID" ng-model="project_Id"/>
 
                                 <INPUT type="text" class="form-control" id="p_Name" placeholder="Project Name" ng-model="project_Name"/>
 
                                 <INPUT type="text" class="form-control" id="p_BuildingId" placeholder="Building ID" ng-model="project_BuildingId"/>
+
+                                <INPUT type="text" class="form-control" id="p_Status" placeholder="Status" ng-model="project_Status"/>
 
                                 <INPUT type="text" class="form-control" id="p_StartDate" placeholder="Start Date" ng-model="project_StartDate"/>
 
@@ -195,10 +197,9 @@
 
                                 <INPUT type="text" class="form-control" id="p_Manager" placeholder="Manager" ng-model="project_Manager"/>
 
-                                <INPUT type="text" class="form-control" id="p_Contractor" placeholder="Contractor" ng-model="project_Manager"/>
+                                <INPUT type="text" class="form-control" id="p_Contractor" placeholder="Contractor" ng-model="project_Contractor"/>
 
-                                <button type="submit" value="post" ng-click="AddProject()"><i class="glyphicon glyphicon-ok-circle"></i>Add</button>
-                                <button type="submit" value="get" ng-click="UpdateProjectList()"><i class="glyphicon glyphicon-cloud"></i>Update</button>
+                                <button type="submit" value="post" ng-click="AddProject()"><i class="glyphicon glyphicon-ok-circle"></i>Add Project</button>
                             </div>
                             <br><br>
                             {{project_feedback}}

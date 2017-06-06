@@ -119,74 +119,34 @@ app.controller('MainCtrl', function($scope, $http) {
             }
         );
 
-    $scope.building_ID = "";
-    $scope.building_Owner = "";
-    $scope.building_Address = "";
-    $scope.building_Type =  "";
-    $scope.building_ConstructionDate = "0001-01-01T00:00:00";
 
+    $scope.AddBuilding = function () {
+        $scope.buildingdirData.push({'ID':$scope.building_ID, 'Owner':$scope.building_Owner,
+            'Address':$scope.building_Address, 'BuildingType':$scope.building_Type, 'ConstructionDate':$scope.building_ConstructionDate});
 
-    /*Add to Building Directory JSON*/
-    var AddBuildingId = $scope.building_ID;
-    var AddBuildingOwner = $scope.building_Owner;
-    var AddBuildingAddress = $scope.building_Address;
-    var AddBuildingType = $scope.building_Type;
-    var AddConstructionDate = $scope.building_ConstructionDate;
-    var read = $scope.buildingdirLocation;
-    var write = 'https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/update.building.json';
-    var sourceObjBuilding = {
-        "ID": AddBuildingId,
-        "Owner": AddBuildingOwner,
-        "Address": AddBuildingAddress,
-        "BuildingType": AddBuildingType,
-        "ConstructionDate": AddConstructionDate
-    };
-    $scope.AddBuilding = function() {                   //adds element to the building directory JSON
-        var AddBuildingId = $scope.building_ID;
-        var AddBuildingOwner = $scope.building_Owner;
-        var AddBuildingAddress = $scope.building_Address;
-        var AddBuildingType = $scope.building_Type;
-        var AddConstructionDate = $scope.building_ConstructionDate;
-        var sourceObjBuilding = {
-            "ID": AddBuildingId,
-            "Owner": AddBuildingOwner,
-            "Address": AddBuildingAddress,
-            "BuildingType": AddBuildingType,
-            "ConstructionDate": AddConstructionDate
+        var dataObjBuild = {
+            ID : $scope.building_ID,
+            Owner : $scope.building_Owner,
+            Address : $scope.building_Address,
+            BuildingType : $scope.building_Type,
+            ConstructionDate : $scope.building_ConstructionDate,
+
         };
-        $scope.$promise1 = $http
-        ({
-            method: "POST",
-            url: write,
-            data: sourceObjBuilding,
-            headers: {'Content-Type': 'application/json'}
-        }).then(function successCall(response) {
-                $scope.building_feedback = "Post>> " + JSON.stringify(sourceObjBuilding);
-                $scope.building_feedback = "Building Added";
-            }, function errorCall(response) {
-                $scope.building_feedback = "Error posting:" + " Status: "+ response.status + " Writing: " + JSON.stringify(sourceObjBuilding);
-            }
-        );
-    }
-    $scope.UpdateBuildingList = function() {                                                          //updates the display for the Building Directory
-        $scope.promise2 = $http.get($scope.buildingdirLocation)
-            .then(function successCall(response) {
-                    $scope.building_feedback = "Get>> " + JSON.stringify(response.data);
-                }, function errorCall(response) {
-                    $scope.building_feedback = "Error getting: " + response.status;
-                }
-            );
-        $scope.get = $http.get($scope.buildingdirLocation)                                //Fetch the JSON file from the location in the variable
-            .then(
-                function successCall(response) {
-                    $scope.buildingdirData = response.data.buildings;                     //Saves json response into this variable
-                    $scope.building_feedback = "Building Directory Updated";
-                }, function errorCall(response) {
-                    $scope.building_feedback = "Error reading file: " + response.status;           // displays feedback error if JSON form incorrect
-                    $scope.buildingdirData = null;                                        // incorrect JSON form will keep it set at null
-                }
-            );
-    }
+        var res = $http.post('https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/update.building.json', dataObjBuild);
+        res.success(function(data, status, headers, config) {
+            $scope.building_feedback = data;
+            $scope.building_feedback = "Building Added";
+        });
+        res.error(function(data, status, headers, config) {
+            alert( "failure message: " + JSON.stringify({data: data}));
+        });
+
+        $scope.building_ID='';
+        $scope.building_Owner='';
+        $scope.building_Address='';
+        $scope.building_Type='';
+        $scope.building_ConstructionDate='';
+    };
 
     //View building from Building Directory in Building Information based on the ID
     $scope.BuildingInfoBuildingId=null;
@@ -207,66 +167,9 @@ app.controller('MainCtrl', function($scope, $http) {
     }
 
 
-//Project List
-    /**Show Project List JSON
-    $scope.project_feedback="waiting";
-    $scope.myArray=[];
-    var tmpArr=[];
-    var x=2;
-    var i=0;
-
-    //project file checking loop
-    for(var i=1; i<x; i++){
-        //check each project.[i].json file
-        $scope.projectLocation = 'https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/project.'+[i]+'.json';
-
-        $http.get($scope.projectLocation)
-            .success(function(data){
-
-                    //if $scope.BuildingInfoBuildingId == Project Building ID
-                        // Show in the Project List
-                            //ProjectID, Name, Status, StartDate, EndDate
-
-            })
-            .error(function(data){
-                //send feedback saying no projects
-                break; //break file scanning loop
-                })
-
-        x++;                //adds 1 to var x to create an infinite loop, only breaks on error
-    }*/
-
-//Project List
-    /**$scope.project_feedback="waiting";
-    $scope.myArray=[];
-    var tmpArr=[];
-    var x=2;
-    var i=0;
-
-    //project file checking loop
-    for(var i=1; i<x; i++){
-        //check each project.[i].json file
-        $scope.projectLocation = 'https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/project.'+[i]+'.json';
-
-        $http.get($scope.projectLocation)
-            .success(function(data){
-
-                //if $scope.BuildingInfoBuildingId == Project Building ID
-                // Show in the Project List
-                //ProjectID, Name, Status, StartDate, EndDate
-
-            })
-            .error(function(data){
-                //send feedback saying no projects
-                break; //break file scanning loop
-            })
-
-        x++;                //adds 1 to var x to create an infinite loop, only breaks on error
-    }*/
-
-
 });
 app.controller('ProjectController', function($scope, $http) {
+
     $scope.BuildingInfoBuildingId=null;
     $scope.viewBuildingDetails = function(index){
         console.log($scope.buildingdirData[index].ID);
@@ -275,21 +178,24 @@ app.controller('ProjectController', function($scope, $http) {
     }
 
 
+    /**Read Project into List*/
+
     $scope.project_feedback="waiting";
-    $scope.ProjectFileArray=[];
+    $scope.projectFileArray=[];
     var tmpArr=[];
-    var x=50;
+    var x=20;
     var i=0;
 
     //project file checking loop
     for(var i=1; i<x; i++) {
+
         //check each project.[i].json file
         $scope.projectLocation = 'https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/project.' + [i] + '.json';
 
         $http.get($scope.projectLocation)
             .success(function(data) {
                     tmpArr = data;
-                    $scope.ProjectFileArray.push(tmpArr);
+                    $scope.projectFileArray.push(tmpArr);
                     $scope.project_feedback = 'Server Loaded';
                     console.log(tmpArr.hasOwnProperty("ProjectID"));
                     console.log(tmpArr.hasOwnProperty("Message"));
@@ -299,149 +205,40 @@ app.controller('ProjectController', function($scope, $http) {
 
     }
 
+    /**Add Project into List*/
+    $scope.AddProject = function () {
+        $scope.projectFileArray.push({'ProjectID':$scope.project_Id, 'Name':$scope.project_Name,
+            'BuildingID':$scope.project_BuildingId, 'Status':$scope.project_Status, 'StartDate':$scope.project_StartDate, 'EndDate':$scope.project_EndDate, 'ContactPerson':$scope.project_ContactPers, 'ProjectManager':$scope.project_Manager, 'Contractor':$scope.project_Contractor});
 
-    /** Post starts here*/
-
-
-    $scope.project_Status = "Active";
-    $scope.project_StartDate = "2016-12-12T00:00:00";
-    $scope.project_EndDate = "2017-12-14T00:00:00";
-    $scope.project_ContactPers = "Joe Bloggs";
-    $scope.project_Manager = "Andy Rubin";
-    $scope.project_Contractor = "ABC Company";
-
-    $scope.workType = "Scaffolding";
-    $scope.workStatus = "In-progress";
-
-    $scope.commentsAuthor = "Glenn Aitchison";
-    $scope.commentsText = "Work started";
-
-    var AddProjId = $scope.project_Id;
-    var AddProjName = $scope.project_Name;
-    var AddProjBuildingId = $scope.project_BuildingId;
-    var AddProjStatus = $scope.project_Status;
-    var AddProjStartDate = $scope.project_StartDate;
-    var AddProjEndDate = $scope.project_EndDate;
-    var AddProjContactPers = $scope.project_ContactPers;
-    var AddProjManager = $scope.project_Manager;
-    var AddProjContractor = $scope.project_Contractor;
-
-    var AddProjWorkType = $scope.workType;
-    var AddProjWorkStatus = $scope.workStatus;
-
-    var AddProjCommentsAuthor = $scope.commentsAuthor;
-    var AddProjCommentsText = $scope.commentsText;
-
-    var readProj = 'https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/project.' + AddProjId + '.json';
-    var writeProj = 'https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/update.project.json';
-    var sourceObjProj = {
-        "ProjectID": AddProjId,
-        "Name": AddProjName,
-        "BuildingID": AddProjBuildingId,
-        "Status": AddProjStatus,
-        "StartDate": AddProjStartDate,
-        "EndDate": AddProjEndDate,
-        "ContactPerson": AddProjContactPers,
-        "ProjectManager": AddProjManager,
-        "Contractor": AddProjContractor,
-        "Works": [{
-            "TypeOfWork": "Scaffolding",
-            "Status": "Done"
-        }, {
-            "TypeOfWork": "Painting",
-            "Status": "In-progress"
-        }],
-        "Comments": [{
-            "Author": "Glenn Aitchison",
-            "Text": "Initial work done"
-        }, {
-            "Author": "Glenn Aitchison",
-            "Text": "Had painting started by tue 12/16"
-        }]
-    };
-    $scope.AddProject = function() { //adds element to the building directory JSON
-        var AddProjId = $scope.project_Id;
-        var AddProjName = $scope.project_Name;
-        var AddProjBuildingId = $scope.project_BuildingId;
-        var AddProjStatus = $scope.project_Status;
-        var AddProjStartDate = $scope.project_StartDate;
-        var AddProjEndDate = $scope.project_EndDate;
-        var AddProjContactPers = $scope.project_ContactPers;
-        var AddProjManager = $scope.project_Manager;
-        var AddProjContractor = $scope.project_Contractor;
-
-        var AddProjWorkType = $scope.workType;
-        var AddProjWorkStatus = $scope.workStatus;
-
-        var AddProjCommentsAuthor = $scope.commentsAuthor;
-        var AddProjCommentsText = $scope.commentsText;
-
-        var sourceObjProj = {
-            "ProjectID": AddProjId,
-            "Name": AddProjName,
-            "BuildingID": AddProjBuildingId,
-            "Status": AddProjStatus,
-            "StartDate": AddProjStartDate,
-            "EndDate": AddProjEndDate,
-            "ContactPerson": AddProjContactPers,
-            "ProjectManager": AddProjManager,
-            "Contractor": AddProjContractor,
-            "Works": [{
-                "TypeOfWork": "Scaffolding",
-                "Status": "Done"
-            }, {
-                "TypeOfWork": "Painting",
-                "Status": "In-progress"
-            }],
-            "Comments": [{
-                "Author": "Glenn Aitchison",
-                "Text": "Initial work done"
-            }, {
-                "Author": "Glenn Aitchison",
-                "Text": "Had painting started by tue 12/16"
-            }]
+        var dataObjProj = {
+            ProjectID : $scope.project_Id,
+            Name : $scope.project_Name,
+            BuildingID : $scope.project_BuildingId,
+            Status : $scope.project_Status,
+            StartDate : $scope.project_StartDate,
+            EndDate : $scope.project_EndDate,
+            ContactPerson : $scope.project_ContactPers,
+            ProjectManager : $scope.project_Manager,
+            Contractor : $scope.project_Contractor,
         };
-        $scope.promise1P = $http({
-            method: "POST",
-            url: writeProj,
-            data: sourceObjProj,
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-            .then(function successCall(response) {
-                $scope.project_feedback = "Post>> " + JSON.stringify(sourceObjProj);
-                $scope.project_feedback = "Project Added";
-            }, function errorCall(response) {
-                $scope.project_feedback = "Error posting:" + " Status: " + response.status + " Writing: " + JSON.stringify(sourceObjProj);
-            });
-    }
+        var res = $http.post('https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/update.project.json', dataObjProj);
+        res.success(function(data, status, headers, config) {
+            $scope.project_feedback = data;
+            $scope.project_feedback = "Project Added";
+        });
+        res.error(function(data, status, headers, config) {
+            alert( "failure message: " + JSON.stringify({data: data}));
+        });
 
-
-    /**Update Project List*/
-    $scope.UpdateProjectList = function() {
-        $scope.projectArray = []; //stores the project into this array
-
-        var tmpArr = []; //stores server response data into this array
-        var x = 100; //condition to break the loo[]
-        var i = 0; //project ID number [i]
-
-        for (var i = 1; i < x; i++) {
-
-            //file url
-            $scope.projectFileUrl = 'https://happybuildings.sim.vuw.ac.nz/api/edwardlewi/project.' + [i] + '.json';
-
-            $http.get($scope.projectFileUrl) //get the file from the url and store the data
-                .success(function(data) {
-                    tmpArr = data;
-                    $scope.projectArray.push(tmpArr);
-                    $scope.project_feedback = 'Server Loaded';
-                    console.log($scope.projectArray.hasOwnProperty("ProjectID"));
-                    $scope.counter++;
-                });
-
-
-        }
-    }
+        $scope.project_Id='';
+        $scope.project_Name='';
+        $scope.project_BuildingId='';
+        $scope.project_Status='';
+        $scope.project_StartDate='';
+        $scope.project_EndDate='';
+        $scope.project_ContactPers='';
+        $scope.project_Manager='';
+        $scope.project_Contractor='';
+    };
 
 });

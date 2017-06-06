@@ -82,14 +82,14 @@
               <button type="submit" class="btn btn-default btn" ng-click="viewBuildingDetails($index)" onclick="openTab(event, 'Building Information')"><i class="glyphicon glyphicon-list-alt"></i>View</button>
             </div>
               <div class="btn-group" ng-show = "adminView">
-              <button type="button" class="btn btn-default btn" ng-click="editBuilding($index)"><i class="glyphicon glyphicon-pencil"></i></button>
-              <button type="button" class="btn btn-default btn" ng-click="removeBuilding($index)"><i class="glyphicon glyphicon-trash"></i></button>
-            </div></td>
-          </tr>
-          </tbody>
-        </table>
+                <!--<button type="button" class="btn btn-default btn" ng-click="editBuilding($index)"><i class="glyphicon glyphicon-pencil"></i></button>-->
+                <button type="button" class="btn btn-default btn" ng-click="removeBuilding($index)"><i class="glyphicon glyphicon-trash"></i></button>
+              </div></td>
+            </tr>
+            </tbody>
+          </table>
 
-        <!--Add Buildings-->
+          <!--Add Buildings-->
         <form class="form-horizontal" >
           <div class="form-group row" align="center">
             <div class="col-sm-2" ng-show = "adminView">
@@ -103,8 +103,7 @@
 
               <INPUT type="text" class="form-control" id="b_ConstructionDate" placeholder="Construction Date" ng-model="building_ConstructionDate"/>
 
-              <button type="submit" value="post" ng-click="AddBuilding()"><i class="glyphicon glyphicon-ok-circle"></i>Add</button>
-              <button type="submit" value="get" ng-click="UpdateBuildingList()"><i class="glyphicon glyphicon-cloud"></i>Update</button>
+              <button type="submit" value="post" ng-click="AddBuilding()"><i class="glyphicon glyphicon-ok-circle"></i>Add Building</button>
             </div>
             <br><br>
             {{building_feedback}}
@@ -162,7 +161,7 @@
                 <tr><th>Project ID</th><th>Name</th><th>Status</th><th>Start Date</th><th>End Date</th></tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="Project in ProjectFileArray">
+                <tr ng-repeat="Project in projectFileArray">
                   <td>{{Project.ProjectID}}</td>
                   <td>{{Project.Name}}</td>
                   <td>{{Project.Status}}</td>
@@ -188,7 +187,7 @@
 
                     <INPUT type="text" class="form-control" id="p_BuildingId" placeholder="Building ID" ng-model="project_BuildingId"/>
 
-                    <INPUT type="text" class="form-control" id="p_Status" placeholder="Building ID" ng-model="project_Status"/>
+                    <INPUT type="text" class="form-control" id="p_Status" placeholder="Status" ng-model="project_Status"/>
 
                     <INPUT type="text" class="form-control" id="p_StartDate" placeholder="Start Date" ng-model="project_StartDate"/>
 
@@ -200,8 +199,7 @@
 
                     <INPUT type="text" class="form-control" id="p_Contractor" placeholder="Contractor" ng-model="project_Contractor"/>
 
-                    <button type="submit" value="post" ng-click="AddProject()"><i class="glyphicon glyphicon-ok-circle"></i>Add</button>
-                    <button type="submit" value="get" ng-click="UpdateProjectList()"><i class="glyphicon glyphicon-cloud"></i>Update</button>
+                    <button type="submit" value="post" ng-click="AddProject()"><i class="glyphicon glyphicon-ok-circle"></i>Add Project</button>
                   </div>
                   <br><br>
                   {{project_feedback}}
