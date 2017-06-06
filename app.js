@@ -264,5 +264,5 @@ app.controller('ProjectController', function($scope, $http) {
         $scope.CurrentProjectStatus= $scope.projectFileArray[index];
         console.log($scope.projectFileArray[index].Status);
     }
-    
+
 });
