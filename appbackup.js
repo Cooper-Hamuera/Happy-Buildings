@@ -38,6 +38,7 @@ app.controller('MainCtrl', function($scope, $http) {
     $scope.loginVisible = true;         //login visibility (Show/Hide)
     $scope.indexVisible = false;        //index visibility (Show/Hide)
     $scope.adminView = false;           //admin visibility (Show/Hide)
+
     $scope.feedback = "";               //Stores feedback String
     $scope.username = "";               //Username field
     $scope.password = "";               //Password field
@@ -108,7 +109,8 @@ app.controller('MainCtrl', function($scope, $http) {
     };
 
 
-    /**Show Building Directory JSON*/
+    /**Building Directory*/
+    //Show building Directory
     $scope.get = $http.get($scope.buildingdirLocation)                                //Fetch the JSON file from the location in the variable
         .then(
             function successCall(response) {
@@ -119,7 +121,7 @@ app.controller('MainCtrl', function($scope, $http) {
             }
         );
 
-
+    //Add to building Directory
     $scope.AddBuilding = function () {
         $scope.buildingdirData.push({'ID':$scope.building_ID, 'Owner':$scope.building_Owner,
             'Address':$scope.building_Address, 'BuildingType':$scope.building_Type, 'ConstructionDate':$scope.building_ConstructionDate});
@@ -148,43 +150,33 @@ app.controller('MainCtrl', function($scope, $http) {
         $scope.building_ConstructionDate='';
     };
 
-    //View building from Building Directory in Building Information based on the ID
-    $scope.BuildingInfoBuildingId=null;
-    $scope.viewBuildingDetails = function(index){
-        console.log($scope.buildingdirData[index].ID);
-        $scope.BuildingInfoBuildingId=$scope.buildingdirData[index].ID;
-        $scope.CurrentBuildingId = $scope.buildingdirData[index];
-    }
-
-    /*Select to edit building in Building Directory
-     $scope.editBuilding = function(idx){
-     $scope.buildingdirData.splice(idx,1)
-     }*/
-
-    //Select to remove building in Building Directory*/
+    //Remove from Building Directory*/
     $scope.removeBuilding = function(idx){
         $scope.buildingdirData.splice(idx,1)
     }
 
+    //View the building
+    $scope.viewBuildingDetails = function(index){
+        $scope.BuildingInfoBuildingId=$scope.buildingdirData[index].ID;
+        $scope.CurrentBuildingId = $scope.buildingdirData[index];
+        console.log($scope.buildingdirData[index].ID);
+    }
+    //Store Building ID to filter Project List
+    $scope.viewBuildingId= function(index) {
+        $scope.buildingIdTag=$scope.buildingdirData[index].ID;
+    }
 
 });
 app.controller('ProjectController', function($scope, $http) {
 
-    $scope.BuildingInfoBuildingId=null;
-    $scope.viewBuildingDetails = function(index){
-        console.log($scope.buildingdirData[index].ID);
-        $scope.BuildingInfoBuildingId=$scope.buildingdirData[index].ID;
-        $scope.CurrentBuildingId = $scope.buildingdirData[index];
-    }
-
-
     /**Read Project into List*/
-
+    $scope.buildingTagHide=false;
     $scope.project_feedback="waiting";
     $scope.projectFileArray=[];
     var tmpArr=[];
     var x=20;
     var i=0;
+    var countProjFiles=0;
 
     //project file checking loop
     for(var i=1; i<x; i++) {
@@ -199,21 +191,21 @@ app.controller('ProjectController', function($scope, $http) {
                     $scope.project_feedback = 'Server Loaded';
                     console.log(tmpArr.hasOwnProperty("ProjectID"));
                     console.log(tmpArr.hasOwnProperty("Message"));
+                    countProjFiles++;
                 }
             );
-
-
     }
+    var newProjId=countProjFiles+1;
 
     /**Add Project into List*/
     $scope.AddProject = function () {
         $scope.projectFileArray.push({'ProjectID':$scope.project_Id, 'Name':$scope.project_Name,
-            'BuildingID':$scope.project_BuildingId, 'Status':$scope.project_Status, 'StartDate':$scope.project_StartDate, 'EndDate':$scope.project_EndDate, 'ContactPerson':$scope.project_ContactPers, 'ProjectManager':$scope.project_Manager, 'Contractor':$scope.project_Contractor});
+            'BuildingID':$scope.buildingIdTag, 'Status':$scope.project_Status, 'StartDate':$scope.project_StartDate, 'EndDate':$scope.project_EndDate, 'ContactPerson':$scope.project_ContactPers, 'ProjectManager':$scope.project_Manager, 'Contractor':$scope.project_Contractor});
 
         var dataObjProj = {
             ProjectID : $scope.project_Id,
             Name : $scope.project_Name,
-            BuildingID : $scope.project_BuildingId,
+            BuildingID : $scope.buildingIdTag,
             Status : $scope.project_Status,
             StartDate : $scope.project_StartDate,
             EndDate : $scope.project_EndDate,
@@ -232,7 +224,6 @@ app.controller('ProjectController', function($scope, $http) {
 
         $scope.project_Id='';
         $scope.project_Name='';
-        $scope.project_BuildingId='';
         $scope.project_Status='';
         $scope.project_StartDate='';
         $scope.project_EndDate='';
@@ -241,4 +232,15 @@ app.controller('ProjectController', function($scope, $http) {
         $scope.project_Contractor='';
     };
 
+//Remove from Building Directory*/
+    $scope.removeProject = function(idx){
+        $scope.projectFileArray.splice(idx,1)
+    }
+
+//View the building
+    $scope.viewProjectDetails = function(index){
+        $scope.ProjectInfoProjectId= $scope.projectFileArray[index].ID;
+        $scope.CurrentProjectId = $scope.projectFileArray[index];
+        console.log($scope.projectFileArray[index].ID);
+    }
 });

@@ -79,7 +79,7 @@
             <td>{{buildings.BuildingType}}</td>
             <td>{{buildings.ConstructionDate}}</td>
             <td><div class="btn-group">
-              <button type="submit" class="btn btn-default btn" ng-click="viewBuildingDetails($index)" onclick="openTab(event, 'Building Information')"><i class="glyphicon glyphicon-list-alt"></i>View</button>
+              <button type="submit" class="btn btn-default btn" ng-click="viewBuildingDetails($index); viewBuildingId($index)"onclick="openTab(event, 'Building Information')"><i class="glyphicon glyphicon-list-alt"></i>View</button>
             </div>
               <div class="btn-group" ng-show = "adminView">
                 <!--<button type="button" class="btn btn-default btn" ng-click="editBuilding($index)"><i class="glyphicon glyphicon-pencil"></i></button>-->
@@ -116,9 +116,9 @@
   </div>
   <!--Building Directory-->
 
-
+<div id="controller2" ng-controller="ProjectController">
   <!--Building Information-->
-  <div id="Building Information" class="tabcontent" ng-controller="ProjectController">
+  <div id="Building Information" class="tabcontent">
     <h3><center>Building Information</center></h3>
 
     <div id="bi_main_content" align="center">
@@ -145,12 +145,6 @@
               <td width="43%" class="right">Construction Date:</td>
               <td>{{CurrentBuildingId.ConstructionDate}}</td>
             </tr>
-
-            <!--<td width="43%" class="right">"bi_projlist"</td> -->
-
-              <tr>
-                <td width="43%" class="right">Project List:</td>
-              </tr>
           </table>
           </form>
             <form>
@@ -161,7 +155,7 @@
                 <tr><th>Project ID</th><th>Name</th><th>Status</th><th>Start Date</th><th>End Date</th></tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="Project in projectFileArray">
+                <tr ng-repeat="Project in projectFileArray| filter:buildingIdTag">
                   <td>{{Project.ProjectID}}</td>
                   <td>{{Project.Name}}</td>
                   <td>{{Project.Status}}</td>
@@ -169,12 +163,14 @@
                   <td>{{Project.EndDate}}</td>
                   <td><div class="btn-group">
                     <button type="submit" class="btn btn-default btn" ng-click="viewProjectDetails($index)" onclick="openTab(event, 'Project Information')"><i class="glyphicon glyphicon-list-alt"></i>View</button>
-                    <button type="button" class="btn btn-default btn" ng-show="adminView" ng-click="editProject($index);"><i class="glyphicon glyphicon-pencil"></i></button>
-                    <button type="button" class="btn btn-default btn" ng-show="adminView" ng-click="deleteProject();"><i class="glyphicon glyphicon-trash"></i></button>
+                    <button type="button" class="btn btn-default btn" ng-show="adminView" ng-click="editProject($index)"><i class="glyphicon glyphicon-pencil"></i></button>
+                    <button type="button" class="btn btn-default btn" ng-show="adminView" ng-click="removeProject()"><i class="glyphicon glyphicon-trash"></i></button>
                   </div></td>
                 </tr>
+                <input ng-show="buildingTagHide" ng-model="buildingIdTag"/>
                 </tbody>
               </table>
+
               <!--Read Project List-->
 
               <!--Add Projects-->
@@ -184,8 +180,6 @@
                     <INPUT type="text" class="form-control" id="p_Id" placeholder="Project ID" ng-model="project_Id"/>
 
                     <INPUT type="text" class="form-control" id="p_Name" placeholder="Project Name" ng-model="project_Name"/>
-
-                    <INPUT type="text" class="form-control" id="p_BuildingId" placeholder="Building ID" ng-model="project_BuildingId"/>
 
                     <INPUT type="text" class="form-control" id="p_Status" placeholder="Status" ng-model="project_Status"/>
 
@@ -221,33 +215,36 @@
       <form>
         <table align="center">
           <tr>
-            <td width="43%" class="right">Project Title:</td>
-            <td Width="57%"><input type="text" name="pTitle" id="pTitle" size="50" autofocus="autofocus" required="required"></td>
+            <td width="43%" class="right">Project ID:</td>
+            <td>{{CurrentProjectId.ProjectID}}</td>
+          </tr>
+          <tr>
+            <td width="43%" class="right">Project Name:</td>
+            <td>{{CurrentProjectId.Name}}</td>
           </tr>
           <tr>
             <td width="43%" class="right">Project Status:</td>
-            <td Width="57%"><input type="text" name="pStatus" id="pStatus" size="50" ></td>
+            <td>{{CurrentProjectId.Status}}</td>
           </tr>
           <tr>
-            <td class="right">Start Date</td>
-            <td Width="57%"><input type="text" name="sDate" id="sDate" size="50" ></td>
+            <td class="right">Start Date:</td>
+            <td>{{CurrentProjectId.StartDate}}</td>
           </tr>
           <tr>
             <td width="43%" class="right">End Date:</td>
-            <td Width="57%"><input type="text" name="eDate" id="eDate" size="50" ></td>
+            <td>{{CurrentProjectId.EndDate}}</td>
           </tr>
           <tr>
             <td width="43%" class="right">Manager:</td>
-            <td Width="57%"><input type="text" name="manager" id="manager" size="50" ></td>
+            <td>{{CurrentProjectId.ProjectManager}}</td>
           </tr>
           <tr>
-            <td width="43%" class="right">Work List:</td>
-            <td Width="57%"><input type="text" name="workList" id="workList" size="50" ></td>
+            <td width="43%" class="right">Contractor:</td>
+            <td>{{CurrentProjectId.Contractor}}</td>
           </tr>
+
           <form id="bi_plist">
-            <tr>
-              <td width="43%" class="right">Project List:</td>
-            </tr>
+
             <table id="wList" cellpadding="10">
               <tr>
                 <td width="43%" class="right">Work ID:</td>
@@ -256,17 +253,11 @@
                 <td width="43%" class="right">Contractor:</td>
               </tr>
               <tr>
-                <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
-                <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
-                <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
-                <td width="57%"><input type="text" name="cType" id="cType" size="20" ></td>
-                <td ng-model="input">
-                  <button type="button" ng-click="add()">View</button>
-                  <button type="submit" ng-click="add()">Add</button>
-                  <li ng-repeat="item in items">
-                    <button ng-click="remove($index)">Remove</button>
-                  </li>
-                </td>
+                <td><div class="btn-group">
+                  <button type="submit" class="btn btn-default btn" ng-click="viewWorkDetails($index)" onclick="openTab(event, 'Work')"><i class="glyphicon glyphicon-list-alt"></i>View</button>
+                  <button type="button" class="btn btn-default btn" ng-show="adminView" ng-click="editWork($index)"><i class="glyphicon glyphicon-pencil"></i></button>
+                  <button type="button" class="btn btn-default btn" ng-show="adminView" ng-click="removeWork()"><i class="glyphicon glyphicon-trash"></i></button>
+                </div></td>
               </tr>
             </table>
             <table id="p_com">
@@ -282,10 +273,11 @@
           </form>
         </table>
       </form>
+
     </div> <!--end main_content-->
   </div><!--end-->
   <!--Project Information-->
-
+</div>
 
   <!--Work-->
   <div id="Work" class="tabcontent">
