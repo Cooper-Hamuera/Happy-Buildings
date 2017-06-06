@@ -189,7 +189,7 @@ app.controller('MainCtrl', function($scope, $http) {
     }
 
     //View building from Building Directory in Building Information based on the ID
-    $scope.BuildingInfoBuildingId="";
+    $scope.BuildingInfoBuildingId=null;
     $scope.viewBuildingDetails = function(index){
         console.log($scope.buildingdirData[index].ID);
         $scope.BuildingInfoBuildingId=$scope.buildingdirData[index].ID;
@@ -267,7 +267,7 @@ app.controller('MainCtrl', function($scope, $http) {
 
 });
 app.controller('ProjectController', function($scope, $http) {
-    $scope.BuildingInfoBuildingId="";
+    $scope.BuildingInfoBuildingId=null;
     $scope.viewBuildingDetails = function(index){
         console.log($scope.buildingdirData[index].ID);
         $scope.BuildingInfoBuildingId=$scope.buildingdirData[index].ID;
